@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Interaction;
+using TMPro;
 
 public class GunManager : MonoBehaviour
 {
-    public OVRInput.Button shootButton;
     public GameObject bulletPrefab;
     public float bulletSpeed = 5;
     public float destroyAfterSeconds = 5;
     public Transform bulletSpawnPoint;
 
+    [SerializeField] private TextMeshProUGUI debugScreenText;
     private bool canShootLeft = false;
     private bool canShootRight = false;
+
 
     void OnTriggerEnter(Collider collider)
     {
@@ -33,17 +35,14 @@ public class GunManager : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        Debug.LogError("Exit: " + collider.gameObject.name);
         if (collider.gameObject.name == "ControllerGrabLocation")
         {
             if (collider.gameObject.transform.parent.parent.parent.name == "LeftController")
             {
-                Debug.LogError("Can not shoot left");
                 canShootLeft = false;
             }
             if (collider.gameObject.transform.parent.parent.parent.name == "RightController")
             {
-                Debug.LogError("Can not shoot right");
                 canShootRight = false;
             }
         }
@@ -51,6 +50,15 @@ public class GunManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        // Debugging
+        debug();
+        // Shooting
+        tryShoot();
+    }
+
+    // Shooting
+    private void tryShoot()
     {
         if (canShootLeft)
         {
@@ -78,5 +86,16 @@ public class GunManager : MonoBehaviour
         spawnedBulletRB.velocity = bulletSpawnPoint.transform.forward * bulletSpeed;
         // Destroy the bullet
         Destroy(spawnedBullet, destroyAfterSeconds);
+    }
+
+    public void debug()
+    {
+        if (debugScreenText != null)
+        {
+            string debuggingText = "Debug:";
+            debuggingText += "\ncanShootLeft = " + canShootLeft.ToString();
+            debuggingText += "\ncanShootRight = " + canShootRight.ToString();
+            debugScreenText.text = debuggingText;
+        }
     }
 }
