@@ -149,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7231303097936419977}
   - component: {fileID: 2025784058160466899}
+  - component: {fileID: 8918694262705276929}
   m_Layer: 0
   m_Name: Left Arm Controller
   m_TagString: Untagged
@@ -193,6 +194,21 @@ MonoBehaviour:
   settingsScreen: {fileID: 9170212171720498440}
   debugScreen: {fileID: 4410789104288434208}
   debugScreenText: {fileID: 2659368814295624625}
+--- !u!114 &8918694262705276929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892033211495841752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff70d5dea6ff5490db068097b9cf8715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 8787136631746088596, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
+  objectPreviewPrefab: {fileID: 4866226911719255794, guid: 76a40811396f24fd79d5b9a3aaa88d3b, type: 3}
+  multiplePlacementsAllowed: 0
 --- !u!1 &4202647957474849096
 GameObject:
   m_ObjectHideFlags: 0
