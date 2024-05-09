@@ -55,7 +55,7 @@ public class GunManager : MonoBehaviour
     void Update()
     {
         // Debugging
-        debug();
+        DebugGun();
         // Shooting
         tryShoot();
     }
@@ -91,7 +91,7 @@ public class GunManager : MonoBehaviour
         Destroy(spawnedBullet, bulletStats.destroyAfterSeconds);
     }
 
-    public void debug()
+    public void DebugGun()
     {
         if (debugScreenText != null)
         {
