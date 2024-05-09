@@ -12,6 +12,9 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private GameObject victoryScreen;
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject debugScreen;
+    private GameObject currentScreen;
+    // Place object
+    [SerializeField] private GameObject placePrinter;
     // Debugging output
     [SerializeField] private TextMeshProUGUI debugScreenText;
     
@@ -19,6 +22,8 @@ public class ArmControllerManager : MonoBehaviour
     {
         // Subscribe to the game manager
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        // Assign current screen
+        currentScreen = startScreen;
     }
 
     void OnDestroy()
@@ -54,12 +59,16 @@ public class ArmControllerManager : MonoBehaviour
             string debuggingText = "Debug:";
             debuggingText += "\n";
             debuggingText += "\nScreen statuses:";
+            debuggingText += "\ncurrentScreen: " + currentScreen?.activeSelf.ToString();
             debuggingText += "\nstartScreen: " + startScreen?.activeSelf.ToString();
             debuggingText += "\nplanningScreen: " + planningScreen?.activeSelf.ToString();
             debuggingText += "\ngameOverScreen: " + gameOverScreen?.activeSelf.ToString();
             debuggingText += "\nvictoryScreen: " + victoryScreen?.activeSelf.ToString();
             debuggingText += "\nsettingsScreen: " + settingsScreen?.activeSelf.ToString();
             debuggingText += "\ndebugScreen: " + debugScreen?.activeSelf.ToString();
+            debuggingText += "\n";
+            debuggingText += "\nFeature statuses:";
+            debuggingText += "\nplacePrinter: " + placePrinter?.activeSelf.ToString();
             debugScreenText.text = debuggingText;
         }
     }
@@ -73,6 +82,24 @@ public class ArmControllerManager : MonoBehaviour
         victoryScreen?.SetActive(false);
         settingsScreen?.SetActive(false);
         // debugScreen?.SetActive(false);
+        placePrinter?.SetActive(false);
     }
 
+    private void updateCurrentScreen(GameObject screen)
+    {
+        currentScreen = screen;
+    }
+
+    public void toggleScreen()
+    {
+        // Activate or deactivate current screen
+        currentScreen?.SetActive(!currentScreen.activeSelf);
+    }
+
+    public void togglePlacePrinter()
+    {
+        // Activate or deactivate the printer placement (and its preview object)
+        placePrinter?.SetActive(!placePrinter.activeSelf);
+        placePrinter.GetComponent<PlaceObject>().togglePreview();
+    }
 }

@@ -48,4 +48,9 @@ public class PlaceObject : MonoBehaviour
             }
         }
     }
+
+    public void togglePreview()
+    {
+        currentPreview?.SetActive(!currentPreview.activeSelf);
+    }
 }
