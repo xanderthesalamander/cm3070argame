@@ -51,6 +51,7 @@ public class PlaceObject : MonoBehaviour
 
     public void togglePreview()
     {
+        // Turn preview object on and off
         currentPreview?.SetActive(!currentPreview.activeSelf);
     }
 }

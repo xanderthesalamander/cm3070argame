@@ -93,13 +93,15 @@ public class ArmControllerManager : MonoBehaviour
     public void toggleScreen()
     {
         // Activate or deactivate current screen
+        Debug.Log("ArmControllerManager - Toggle screen");
         currentScreen?.SetActive(!currentScreen.activeSelf);
     }
 
     public void togglePlacePrinter()
     {
         // Activate or deactivate the printer placement (and its preview object)
+        Debug.Log("ArmControllerManager - Toggle printer placement");
         placePrinter?.SetActive(!placePrinter.activeSelf);
-        placePrinter.GetComponent<PlaceObject>().togglePreview();
+        placePrinter?.GetComponent<PlaceObject>().togglePreview();
     }
 }

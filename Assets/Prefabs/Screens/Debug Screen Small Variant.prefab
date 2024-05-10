@@ -28,9 +28,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text - Debugging
       objectReference: {fileID: 0}
+    - target: {fileID: 2979085398633133274, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+      propertyPath: TMPTextLogs
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3137184628470158506, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_text
-      value: Debug Title
+      value: Debug
       objectReference: {fileID: 0}
     - target: {fileID: 3137184628470158506, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_fontSize
@@ -112,10 +116,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7282860426844707576, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+      propertyPath: m_text
+      value: 'Debugging:
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969695059901363925, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+      propertyPath: m_Name
+      value: Text - Debugging Title
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1980210377607989543, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+    - {fileID: 2979085398633133274, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7954837481893689827, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+    - {fileID: 8294468950205731722, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+    - {fileID: 8654381925062209933, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+    - {fileID: 7969695059901363925, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+    - {fileID: 7910060678802915644, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+    - {fileID: 4097734425508433352, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
