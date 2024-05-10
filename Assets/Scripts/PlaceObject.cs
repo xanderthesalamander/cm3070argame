@@ -26,7 +26,7 @@ public class PlaceObject : MonoBehaviour
             OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch),
             OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch) * Vector3.forward
         );
-        // 
+        // Get what the ray is hitting
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             // Show the prefab preview so that it matches the hit object's normal vector

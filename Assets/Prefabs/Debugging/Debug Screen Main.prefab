@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5828348315146594647}
   - component: {fileID: 2979085398633133274}
   m_Layer: 3
-  m_Name: Debug Screen
+  m_Name: Debug Screen Main
   m_TagString: Debug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

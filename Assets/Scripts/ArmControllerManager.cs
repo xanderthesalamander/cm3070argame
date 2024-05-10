@@ -13,13 +13,15 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject debugScreen;
     private GameObject currentScreen;
-    // Place object
+    // Functionalities
     [SerializeField] private GameObject placePrinter;
+    [SerializeField] private GameObject debugRay;
     // Debugging output
     [SerializeField] private TextMeshProUGUI debugScreenText;
     
     void Awake()
     {
+        Troubleshooting();
         // Subscribe to the game manager
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
         // Assign current screen
@@ -44,6 +46,7 @@ public class ArmControllerManager : MonoBehaviour
     void Start()
     {
         DeactivateAllScreens();
+        DeactivateAllFunctionalities();
     }
 
     // Update is called once per frame
@@ -69,6 +72,7 @@ public class ArmControllerManager : MonoBehaviour
             debuggingText += "\n";
             debuggingText += "\nFeature statuses:";
             debuggingText += "\nplacePrinter: " + placePrinter?.activeSelf.ToString();
+            debuggingText += "\ndebugRay: " + debugRay?.activeSelf.ToString();
             debugScreenText.text = debuggingText;
         }
     }
@@ -82,7 +86,13 @@ public class ArmControllerManager : MonoBehaviour
         victoryScreen?.SetActive(false);
         settingsScreen?.SetActive(false);
         // debugScreen?.SetActive(false);
+    }
+
+    void DeactivateAllFunctionalities()
+    {
+        // Set inactive
         placePrinter?.SetActive(false);
+        debugRay?.SetActive(false);
     }
 
     private void updateCurrentScreen(GameObject screen)
@@ -103,5 +113,28 @@ public class ArmControllerManager : MonoBehaviour
         Debug.Log("ArmControllerManager - Toggle printer placement");
         placePrinter?.SetActive(!placePrinter.activeSelf);
         placePrinter?.GetComponent<PlaceObject>().togglePreview();
+    }
+
+    public void toggleDebugRay()
+    {
+        // Activate or deactivate the debug ray
+        Debug.Log("ArmControllerManager - Toggle debug ray");
+        debugRay?.SetActive(!debugRay.activeSelf);
+        debugRay?.GetComponent<DebugRay>().toggleRayHitPreview();
+    }
+
+    private void Troubleshooting()
+    {
+        // Troubleshoot for missing references
+        string errorText = "ArmControlManager - ERROR - Missing component reference: ";
+        if (startScreen == null) {Debug.LogError(errorText + "startScreen");}
+        if (planningScreen == null) {Debug.LogError(errorText + "planningScreen");}
+        if (gameOverScreen == null) {Debug.LogError(errorText + "gameOverScreen");}
+        if (victoryScreen == null) {Debug.LogError(errorText + "victoryScreen");}
+        if (settingsScreen == null) {Debug.LogError(errorText + "settingsScreen");}
+        if (debugScreen == null) {Debug.LogError(errorText + "debugScreen");}
+        if (placePrinter == null) {Debug.LogError(errorText + "placePrinter");}
+        if (debugRay == null) {Debug.LogError(errorText + "debugRay");}
+        if (debugScreenText == null) {Debug.LogError(errorText + "debugScreenText");}
     }
 }
