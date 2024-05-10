@@ -5,10 +5,13 @@ using UnityEngine;
 public class DebugRay : MonoBehaviour
 {
     [SerializeField] GameObject rayHitPreview;
+    [SerializeField] Material highlightMaterial;
     
     private GameObject currentRayHitPreview;
     private GameObject currentHit;
     private GameObject previousHit;
+    private Material currentHitOriginalMaterial;
+    private Material previousHitOriginalMaterial;
     
     void Start()
     {
@@ -25,14 +28,41 @@ public class DebugRay : MonoBehaviour
         // Get what the ray is hitting
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            // Show a dot where the ray is hitting
+            // Show where the ray is hitting
             currentRayHitPreview.transform.position = hit.point;
             currentRayHitPreview.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
             // Get object information
+            currentHit = hit.collider.gameObject;
+            // When object is new
+            if (currentHit != previousHit)
+            {
+                // Apply original material to previous hit
+                MeshRenderer previousMeshRenderer = previousHit?.GetComponent<MeshRenderer>();
+                if (previousMeshRenderer != null)
+                {
+                    previousMeshRenderer.material = previousHitOriginalMaterial;
+                }
+                // Get material of current hit
+                MeshRenderer currentMeshRenderer = currentHit.GetComponent<MeshRenderer>();
+                if (currentMeshRenderer != null)
+                {
+                    currentHitOriginalMaterial = currentMeshRenderer?.material;
+                    // Apply highlighter
+                    currentMeshRenderer.material = highlightMaterial;
+                    previousHitOriginalMaterial = currentHitOriginalMaterial;
+                }
+                // Store as previous hit
+                previousHit = currentHit;
+            }
+
             OVRSemanticClassification anchor = hit.collider.gameObject.GetComponentInParent<OVRSemanticClassification>();
             if (anchor != null)
             {
-                Debug.Log("Hit anchor with labels: " + string.Join(", ", anchor.Labels));
+                Debug.Log("DebugRay - Labels: " + string.Join(", ", anchor.Labels));
+            }
+            else
+            {
+                Debug.Log("DebugRay - No labels");
             }
         }
     }

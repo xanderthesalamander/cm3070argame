@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1132682185376712905}
   - component: {fileID: 8013016026686888416}
   m_Layer: 9
-  m_Name: Transparent Volume (Renderer and Collider)
+  m_Name: OVR_VOLUME Transparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

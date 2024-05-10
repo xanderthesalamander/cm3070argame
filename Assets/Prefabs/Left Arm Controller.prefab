@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayHitPreview: {fileID: 1629741985568745640, guid: 6245757bd09624e43b6fe7be58457af3, type: 3}
+  highlightMaterial: {fileID: 2100000, guid: be5935c21249e44e9916f1d2c70abd74, type: 2}
 --- !u!1001 &482124892039348754
 PrefabInstance:
   m_ObjectHideFlags: 0
