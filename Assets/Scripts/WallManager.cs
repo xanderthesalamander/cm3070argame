@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallManager : MonoBehaviour
 {
-    [SerializeField] Material highlightMaterial;
+    [SerializeField] GameObject wallPrefab;
     
     private OVRSceneManager OVRsceneManager;
     private OVRSceneRoom sceneRoom;
@@ -24,6 +24,12 @@ public class WallManager : MonoBehaviour
     private void SceneLoaded()
     {
         // Once scene is loaded, get the room walls
+        GetWalls();
+    }
+
+    private void GetWalls()
+    {
+        // // Get the room walls
         sceneRoom = FindObjectOfType<OVRSceneRoom>();
         Debug.Log("WallManager - Finding walls");
         wallPlanes = sceneRoom.Walls;
@@ -38,41 +44,48 @@ public class WallManager : MonoBehaviour
             {
                 // Update walls
                 Debug.Log("WallManager - Updating walls");
-                UpdateWall(wallPlanes[3]);
+                foreach (OVRScenePlane wallPlane in wallPlanes)
+                {
+                    UpdateWall(wallPlane);
+                }
                 Debug.Log("WallManager - Walls updated");
                 wallsUpdated = true;
             }
         }
     }
 
-    void UpdateWall(OVRScenePlane wallPlane)
+    private void UpdateWall(OVRScenePlane wallPlane)
     {
         // Get wall game object
-        Debug.Log("WallManager - Getting parent object");
-        GameObject wall = wallPlane.transform.parent.gameObject;
+        GameObject wall = wallPlane.transform.gameObject;
+        // Get position
+        Vector3 wallPosition = wall.transform.position;
+        // Get OVSSceneAnchor
+        OVRSceneAnchor wallAnchor = wall.GetComponent<OVRSceneAnchor>();
+        // Get dimensions
+        Vector2 wallDimensions = wallPlane.Dimensions;
+        Debug.Log("WallManager - Wall dimensions: " + wallDimensions.ToString());
+        // Place wall prefab
+        Debug.Log("WallManager - Create new wall");
+        GameObject newWall = Instantiate(wallPrefab);
+        newWall.transform.position = wall.transform.position;
+        newWall.transform.rotation = wall.transform.rotation;
+        newWall.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, newWall.transform.localScale.z);
+        Debug.Log("WallManager - New wall placed " + newWall.transform.position.ToString());
+        // Deactivate original wall
+        wall.SetActive(false);
+        Debug.Log("WallManager - Original wall deactivated");
 
-        // Get components
-        Debug.Log("WallManager - Getting components");
-        Component[] wallComponents = wall.GetComponents(typeof(Component));
-        Debug.Log("WallManager - " + wallComponents.Length.ToString() + " components found");
-        foreach (Component component in wallComponents)
+    }
+
+    private void PrintDebugComponents(Component[] components)
+    {
+        Debug.Log("WallManager - " + components.Length.ToString() + " components found");
+        foreach (Component component in components)
         {
+            // This has 3 children: Transform, OVRSceneAnchor and OVRSceneRoom
             Debug.Log("WallManager - " + component.GetType().Name.ToString());
         }
-
-        Debug.Log("WallManager - Copy wall");
-        GameObject newWall = Instantiate(wall);
-        newWall.transform.position = new Vector3(0.0f, 10.0f, 0.0f);
-        Debug.Log("WallManager - New wall placed");
-        // Check for renderer
-        MeshRenderer meshRenderer = newWall.GetComponent<MeshRenderer>();
-        if (meshRenderer != null)
-        {
-            Debug.Log("WallManager - Updating material");
-            meshRenderer.material = highlightMaterial;
-        }
-        // Add to newWalls array
-
     }
 
 }

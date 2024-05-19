@@ -63,6 +63,7 @@ public class ArmControllerManager : MonoBehaviour
         if (debugScreenText != null)
         {
             string debuggingText = "Debug:";
+            debuggingText += "\nPosition: " + transform.position.ToString();
             debuggingText += "\n";
             debuggingText += "\nScreen statuses:";
             debuggingText += "\ncurrentScreen: " + currentScreen?.activeSelf.ToString();

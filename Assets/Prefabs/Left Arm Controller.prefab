@@ -666,6 +666,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Arm Control Debugger
       objectReference: {fileID: 0}
+    - target: {fileID: 7326748197559973930, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326748197559973930, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_Name
       value: Debug Screen Small Variant

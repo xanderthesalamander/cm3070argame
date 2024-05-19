@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd3df42ac3e84501b679401ba74812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 8cf6bbeb0f96d4418897f82e1561c211, type: 2}
+  wallPrefab: {fileID: 4870985529851428691, guid: 32b2618577edc4ae39e4593a6a113464, type: 3}
 --- !u!1 &872747178
 GameObject:
   m_ObjectHideFlags: 0
