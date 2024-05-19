@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlaceObject : MonoBehaviour
 {
     public GameObject objectPrefab;
+    [Tooltip("A prefab of the object to be placed")]
     public GameObject objectPreviewPrefab;
+    [Tooltip("A prefab of the preview object (this is shown before placement)")]
     public bool multiplePlacementsAllowed = false;
+    [Tooltip("Whether multiple copies of the object can be placed. ")]
     
     private GameObject currentPreview;
     private GameObject currentObject;
