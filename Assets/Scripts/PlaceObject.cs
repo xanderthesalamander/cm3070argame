@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlaceObject : MonoBehaviour
 {
-    public GameObject objectPrefab;
+    [SerializeField] GameObject objectPrefab;
     [Tooltip("A prefab of the object to be placed")]
-    public GameObject objectPreviewPrefab;
+    [SerializeField] GameObject objectPreviewPrefab;
     [Tooltip("A prefab of the preview object (this is shown before placement)")]
-    public bool multiplePlacementsAllowed = false;
+    [SerializeField] bool multiplePlacementsAllowed = false;
     [Tooltip("Whether multiple copies of the object can be placed. ")]
     
     private GameObject currentPreview;
@@ -20,6 +20,7 @@ public class PlaceObject : MonoBehaviour
         currentPreview = Instantiate(objectPreviewPrefab);
         currentObject = Instantiate(objectPrefab);
         currentObject.SetActive(false);
+
     }
 
     public void Update()

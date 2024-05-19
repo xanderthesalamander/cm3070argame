@@ -5,13 +5,9 @@ using UnityEngine;
 public class DebugRay : MonoBehaviour
 {
     [SerializeField] GameObject rayHitPreview;
-    /// <summary>
-    /// A prefab that will be shown in the point that is hit by the reaycast
-    /// </summary>
+    [Tooltip("A prefab that will be shown in the point that is hit by the reaycast")]
     [SerializeField] Material highlightMaterial;
-    /// <summary>
-    /// The material that will be used to highlight the hit object
-    /// </summary>
+    [Tooltip("The material that will be used to highlight the hit object")]
     
     private GameObject currentRayHitPreview;
     private GameObject currentHit;

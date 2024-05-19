@@ -15,12 +15,17 @@ public class WallManager : MonoBehaviour
 
     private void Awake()
     {
+        WallBreakable wb = wallPrefab.GetComponent<WallBreakable>();
+        if (wb == null)
+        {
+            Debug.LogError("WallManager - Cannot get WallBreakable component in prefab");
+        }
         // Get OVR scene manager
         OVRsceneManager = FindObjectOfType<OVRSceneManager>();
         // Subscribe to scene loaded event
         OVRsceneManager.SceneModelLoadedSuccessfully += SceneLoaded;
     }
-    
+
     private void SceneLoaded()
     {
         // Once scene is loaded, get the room walls
@@ -29,7 +34,7 @@ public class WallManager : MonoBehaviour
 
     private void GetWalls()
     {
-        // // Get the room walls
+        // Get the room walls
         sceneRoom = FindObjectOfType<OVRSceneRoom>();
         Debug.Log("WallManager - Finding walls");
         wallPlanes = sceneRoom.Walls;
@@ -70,12 +75,22 @@ public class WallManager : MonoBehaviour
         GameObject newWall = Instantiate(wallPrefab);
         newWall.transform.position = wall.transform.position;
         newWall.transform.rotation = wall.transform.rotation;
-        newWall.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, newWall.transform.localScale.z);
-        Debug.Log("WallManager - New wall placed " + newWall.transform.position.ToString());
+        
+        // newWall.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, newWall.transform.localScale.z);
+        GameObject cube = newWall.transform.Find("Cube").gameObject;
+        cube.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, cube.transform.localScale.z);
+
+        // Debug.Log("WallManager - New wall location " + newWall.transform.position.ToString());
+        // Debug.Log("WallManager - New wall rotation " + newWall.transform.rotation.ToString());
+        // Break wall into sections that can be destroyed
+        WallBreakable wb = newWall.GetComponent<WallBreakable>();
+        if (wb != null)
+        {
+            wb.MakeBreakable();
+        }
         // Deactivate original wall
         wall.SetActive(false);
         Debug.Log("WallManager - Original wall deactivated");
-
     }
 
     private void PrintDebugComponents(Component[] components)
