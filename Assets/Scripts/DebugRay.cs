@@ -5,7 +5,13 @@ using UnityEngine;
 public class DebugRay : MonoBehaviour
 {
     [SerializeField] GameObject rayHitPreview;
+    /// <summary>
+    /// A prefab that will be shown in the point that is hit by the reaycast
+    /// </summary>
     [SerializeField] Material highlightMaterial;
+    /// <summary>
+    /// The material that will be used to highlight the hit object
+    /// </summary>
     
     private GameObject currentRayHitPreview;
     private GameObject currentHit;
@@ -67,9 +73,15 @@ public class DebugRay : MonoBehaviour
         }
     }
 
-    public void toggleRayHitPreview()
+    public void toggleDebugRay()
     {
         // Turn preview object on and off
         currentRayHitPreview?.SetActive(!currentRayHitPreview.activeSelf);
+        // Apply original material to previous and current hit
+        MeshRenderer previousMeshRenderer = previousHit?.GetComponent<MeshRenderer>();
+        if (previousMeshRenderer != null)
+        {
+            previousMeshRenderer.material = previousHitOriginalMaterial;
+        }
     }
 }

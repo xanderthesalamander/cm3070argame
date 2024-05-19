@@ -6,6 +6,7 @@ using TMPro;
 public class ArmControllerManager : MonoBehaviour
 {
     // Screens
+    [Header("Screens")]
     [SerializeField] private GameObject startScreen;
     [SerializeField] private GameObject planningScreen;
     [SerializeField] private GameObject gameOverScreen;
@@ -14,9 +15,11 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private GameObject debugScreen;
     private GameObject currentScreen;
     // Functionalities
+    [Header("Functionalities")]
     [SerializeField] private GameObject placePrinter;
     [SerializeField] private GameObject debugRay;
     // Debugging output
+    [Header("Debug Output")]
     [SerializeField] private TextMeshProUGUI debugScreenText;
     
     void Awake()
@@ -120,7 +123,7 @@ public class ArmControllerManager : MonoBehaviour
         // Activate or deactivate the debug ray
         Debug.Log("ArmControllerManager - Toggle debug ray");
         debugRay?.SetActive(!debugRay.activeSelf);
-        debugRay?.GetComponent<DebugRay>().toggleRayHitPreview();
+        debugRay?.GetComponent<DebugRay>().toggleDebugRay();
     }
 
     private void Troubleshooting()
