@@ -5,6 +5,7 @@ using UnityEngine;
 public class WallManager : MonoBehaviour
 {
     [SerializeField] GameObject wallPrefab;
+    [Tooltip("The prefab to be used to generate walls")]
     
     private OVRSceneManager OVRsceneManager;
     private OVRSceneRoom sceneRoom;
@@ -75,11 +76,9 @@ public class WallManager : MonoBehaviour
         GameObject newWall = Instantiate(wallPrefab);
         newWall.transform.position = wall.transform.position;
         newWall.transform.rotation = wall.transform.rotation;
-        
-        // newWall.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, newWall.transform.localScale.z);
+        // The transform is done in the child object to avoid issues when rotating
         GameObject cube = newWall.transform.Find("Cube").gameObject;
         cube.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, cube.transform.localScale.z);
-
         // Debug.Log("WallManager - New wall location " + newWall.transform.position.ToString());
         // Debug.Log("WallManager - New wall rotation " + newWall.transform.rotation.ToString());
         // Break wall into sections that can be destroyed

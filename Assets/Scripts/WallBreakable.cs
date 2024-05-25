@@ -45,10 +45,6 @@ public class WallBreakable : MonoBehaviour
             // Calculate the size and position of each part
             float partPosY = bottomY + (i * sectionSize) + (sectionSize * 0.5f);
             Vector3 partSize = new Vector3(originalScale.x, sectionSize, originalScale.z);  // Rotation ok
-            // Vector3 partSize = new Vector3(originalScale.x * originalSize.x, sectionSize, originalScale.z * originalSize.z);  // Rotation ok, wall depth different in each wall and width not enough in some walls
-            // Vector3 partSize = new Vector3(originalScale.x, sectionSize, originalScale.z); // Rotation ok, but width too small
-            // Vector3 partSize = new Vector3(originalScale.x * originalSize.x, sectionSize, originalScale.z);  // Rotation ok, but some walls width not enough
-            // Vector3 partSize = new Vector3(originalSize.x, sectionSize, originalSize.z); 
             Vector3 partPosition = new Vector3(originalPosition.x, partPosY, originalPosition.z);
             // Instantiate a smaller cube for each part
             GameObject partCube = Instantiate(originalCube, partPosition, Quaternion.identity);
