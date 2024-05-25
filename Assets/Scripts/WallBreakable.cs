@@ -32,9 +32,9 @@ public class WallBreakable : MonoBehaviour
         Vector3 originalPosition = originalCube.transform.position;
         Vector3 originalSize = originalCube.GetComponent<Renderer>().bounds.size;
         Vector3 originalScale = originalCube.transform.localScale;
-        Debug.Log("X: scale " + originalScale.x.ToString() + ", size " + originalSize.x.ToString());
-        Debug.Log("Y: scale " + originalScale.y.ToString() + ", size " + originalSize.y.ToString());
-        Debug.Log("Z: scale " + originalScale.z.ToString() + ", size " + originalSize.z.ToString());
+        // Debug.Log("X: scale " + originalScale.x.ToString() + ", size " + originalSize.x.ToString());
+        // Debug.Log("Y: scale " + originalScale.y.ToString() + ", size " + originalSize.y.ToString());
+        // Debug.Log("Z: scale " + originalScale.z.ToString() + ", size " + originalSize.z.ToString());
         // Section size
         float sectionSize = originalSize.y / numSections;
         // Bottom position

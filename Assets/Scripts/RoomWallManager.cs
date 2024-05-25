@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallManager : MonoBehaviour
+public class RoomWallManager : MonoBehaviour
 {
     [SerializeField] GameObject wallPrefab;
     [Tooltip("The prefab to be used to generate walls")]
@@ -10,7 +10,7 @@ public class WallManager : MonoBehaviour
     private OVRSceneManager OVRsceneManager;
     private OVRSceneRoom sceneRoom;
     private OVRScenePlane[] wallPlanes;
-    private GameObject newWalls;
+    private List<GameObject> newWalls;
 
     private bool wallsUpdated = false;
 
@@ -19,7 +19,7 @@ public class WallManager : MonoBehaviour
         WallBreakable wb = wallPrefab.GetComponent<WallBreakable>();
         if (wb == null)
         {
-            Debug.LogError("WallManager - Cannot get WallBreakable component in prefab");
+            Debug.LogError("RoomWallManager - Cannot get WallBreakable component in prefab");
         }
         // Get OVR scene manager
         OVRsceneManager = FindObjectOfType<OVRSceneManager>();
@@ -37,9 +37,9 @@ public class WallManager : MonoBehaviour
     {
         // Get the room walls
         sceneRoom = FindObjectOfType<OVRSceneRoom>();
-        Debug.Log("WallManager - Finding walls");
+        Debug.Log("RoomWallManager - Finding walls");
         wallPlanes = sceneRoom.Walls;
-        Debug.Log("WallManager - " + wallPlanes.Length.ToString() + " walls found");
+        Debug.Log("RoomWallManager - " + wallPlanes.Length.ToString() + " walls found");
     }
 
     private void Update()
@@ -49,12 +49,12 @@ public class WallManager : MonoBehaviour
             if (wallsUpdated == false)
             {
                 // Update walls
-                Debug.Log("WallManager - Updating walls");
+                Debug.Log("RoomWallManager - Updating walls");
                 foreach (OVRScenePlane wallPlane in wallPlanes)
                 {
                     UpdateWall(wallPlane);
                 }
-                Debug.Log("WallManager - Walls updated");
+                Debug.Log("RoomWallManager - Walls updated");
                 wallsUpdated = true;
             }
         }
@@ -70,17 +70,17 @@ public class WallManager : MonoBehaviour
         OVRSceneAnchor wallAnchor = wall.GetComponent<OVRSceneAnchor>();
         // Get dimensions
         Vector2 wallDimensions = wallPlane.Dimensions;
-        Debug.Log("WallManager - Wall dimensions: " + wallDimensions.ToString());
+        Debug.Log("RoomWallManager - Wall dimensions: " + wallDimensions.ToString());
         // Place wall prefab
-        Debug.Log("WallManager - Create new wall");
+        Debug.Log("RoomWallManager - Create new wall");
         GameObject newWall = Instantiate(wallPrefab);
         newWall.transform.position = wall.transform.position;
         newWall.transform.rotation = wall.transform.rotation;
         // The transform is done in the child object to avoid issues when rotating
         GameObject cube = newWall.transform.Find("Cube").gameObject;
         cube.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, cube.transform.localScale.z);
-        // Debug.Log("WallManager - New wall location " + newWall.transform.position.ToString());
-        // Debug.Log("WallManager - New wall rotation " + newWall.transform.rotation.ToString());
+        // Debug.Log("RoomWallManager - New wall location " + newWall.transform.position.ToString());
+        // Debug.Log("RoomWallManager - New wall rotation " + newWall.transform.rotation.ToString());
         // Break wall into sections that can be destroyed
         WallBreakable wb = newWall.GetComponent<WallBreakable>();
         if (wb != null)
@@ -89,16 +89,17 @@ public class WallManager : MonoBehaviour
         }
         // Deactivate original wall
         wall.SetActive(false);
-        Debug.Log("WallManager - Original wall deactivated");
+        Debug.Log("RoomWallManager - Original wall deactivated");
+
     }
 
     private void PrintDebugComponents(Component[] components)
     {
-        Debug.Log("WallManager - " + components.Length.ToString() + " components found");
+        Debug.Log("RoomWallManager - " + components.Length.ToString() + " components found");
         foreach (Component component in components)
         {
             // This has 3 children: Transform, OVRSceneAnchor and OVRSceneRoom
-            Debug.Log("WallManager - " + component.GetType().Name.ToString());
+            Debug.Log("RoomWallManager - " + component.GetType().Name.ToString());
         }
     }
 
