@@ -51,13 +51,14 @@ public class WallBreakable : MonoBehaviour
             partCube.transform.rotation = originalCube.transform.rotation;
             partCube.transform.localScale = partSize;
             // Assign random material from list
-            partCube.GetComponent<MeshRenderer>().material = materials[Random.Range(0,materials.Length)];
+            partCube.GetComponent<MeshRenderer>().material = materials[0];
             // Set parent to original parent
             partCube.transform.SetParent(originalCube.transform.parent);
             // Remove breaking on impact for bottom layers
             if (i < protectedBottomLayers)
             {
-                partCube.GetComponent<DestroyOnBulletImpact>().enabled = false;
+                partCube.GetComponent<DestroyOnBulletImpact>().allowDestroy = false;
+                partCube.GetComponent<MeshRenderer>().material = materials[1];
             }
         }
         // Destroy the original cube
