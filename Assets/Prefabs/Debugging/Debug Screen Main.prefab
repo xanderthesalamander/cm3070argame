@@ -189,7 +189,7 @@ MonoBehaviour:
   TMPTextWarnings: {fileID: 1130257387350979405}
   keepWarningLines: 6
   TMPTextErrors: {fileID: 3283013151849645357}
-  keepErrorLines: 7
+  keepErrorLines: 20
 --- !u!1 &4097734425508433352
 GameObject:
   m_ObjectHideFlags: 0

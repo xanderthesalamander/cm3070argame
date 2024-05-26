@@ -57,7 +57,7 @@ public class DebugScreen : MonoBehaviour
             if (lines.Length > 0)
             {
                 // Append the warning information
-                string warningText = TMPTextWarnings.text + logString;
+                string warningText = TMPTextWarnings.text + "\n" + logString;
                 // Keep only the last N lines
                 TMPTextWarnings.text = GetLastNLines(warningText, keepWarningLines);
             }
