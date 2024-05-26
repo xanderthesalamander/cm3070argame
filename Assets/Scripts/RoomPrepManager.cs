@@ -195,6 +195,10 @@ public class RoomPrepManager : MonoBehaviour
             // 1. The resulting mesh takes time to generate. With all the walls the lag is too much
             //    Possible test: once 1 is solved, try to remove the renderer (or just make it transparent)
             // 2. The resutling mesh gets too many parts cut out to the point where it is not usable
+            // IDEA:
+            // Instead of generating the mesh, it might be possible to use a rule where
+            // if the collider is both in the global mesh AND in the breakable wall, then ignore
+            // (e.g. bullet still goes through, enemies can walk, can see through etc.)
         // }
         // ===================
         // Break wall into sections that can be destroyed
