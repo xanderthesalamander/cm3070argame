@@ -26,6 +26,7 @@ public class RoomPrepManager : MonoBehaviour
 
     private bool roomUpdated = false;
     private bool globalMeshUpdated = false;
+    private bool globalMeshReplaced = false;
 
     private void Awake()
     {
@@ -56,13 +57,13 @@ public class RoomPrepManager : MonoBehaviour
         // Get all OVRSceneVolumeMeshFilters (this should find the GLOBAL_MESH)
         sceneVolumeMeshFilters = UnityEngine.Object.FindObjectsOfType<OVRSceneVolumeMeshFilter>();
         // Add to room meshes
-        roomMeshes = new List<GameObject>();
+        // roomMeshes = new List<GameObject>();
         bool allMeshesCompleted = true;
         foreach (OVRSceneVolumeMeshFilter sceneVolumeMeshFilter in sceneVolumeMeshFilters)
         {
             if (sceneVolumeMeshFilter.IsCompleted == true)
             {
-                roomMeshes.Add(sceneVolumeMeshFilter.transform.gameObject);
+                // roomMeshes.Add(sceneVolumeMeshFilter.transform.gameObject);
             }
             else
             {
@@ -87,18 +88,25 @@ public class RoomPrepManager : MonoBehaviour
         {
             if (globalMeshUpdated == true)
             {
+                if (globalMeshReplaced == false)
+                {
+                    roomMeshes = new List<GameObject>();
+                    UpdateRoomMesh(sceneVolumeMeshFilters[0]);
+                    globalMeshReplaced = true;
+                }
+                
                 if (roomUpdated == false)
                 {
-                    GetRoomMeshes();
+                    // GetRoomMeshes();
                     // Update walls
                     Debug.Log("RoomPrepManager - Updating walls");
-                    UpdateWall(wallPlanes[0]);
-                    UpdateWall(wallPlanes[1]);
+                    // UpdateWall(wallPlanes[0]);
+                    // UpdateWall(wallPlanes[1]);
                     // UpdateWall(wallPlanes[2]);
-                    // foreach (OVRScenePlane wallPlane in wallPlanes)
-                    // {
-                    //     UpdateWall(wallPlane);
-                    // }
+                    foreach (OVRScenePlane wallPlane in wallPlanes)
+                    {
+                        UpdateWall(wallPlane);
+                    }
                     Debug.Log("RoomPrepManager - Walls updated");
                     roomUpdated = true;
                 }
@@ -110,18 +118,47 @@ public class RoomPrepManager : MonoBehaviour
         }
     }
 
-    private void UpdateRoomMesh()
+    private void UpdateRoomMesh(OVRSceneVolumeMeshFilter sceneVolumeMeshFilter)
     {
-        // Update mesh
-        foreach (GameObject roomMesh in roomMeshes)
-        {
-            // Debug components
-            Component[] components = roomMesh.GetComponents(typeof(Component));
-            PrintDebugComponents(components);
-            // CSGSubtractDirectly(roomMesh, subtractObject);
-            // removeWallFromGlobalMesh(roomMesh, subtractObject);
-            // removeWallFromGlobalMesh(roomMesh);
-        }
+        // Update mesh (replace with custom)
+        // Get mesh game object
+        GameObject originalRoomMeshObj = sceneVolumeMeshFilter.transform.gameObject;
+        // Get position
+        Vector3 originalPosition = sceneVolumeMeshFilter.transform.position;
+        // Get OVSSceneAnchor
+        OVRSceneAnchor originalAnchor = sceneVolumeMeshFilter.GetComponent<OVRSceneAnchor>();
+        // Place wall prefab
+        Debug.Log("RoomPrepManager - Create new room mesh");
+        GameObject newRoomMeshObj = Instantiate(roomMeshPrefab);
+        newRoomMeshObj.transform.position = originalRoomMeshObj.transform.position;
+        newRoomMeshObj.transform.rotation = originalRoomMeshObj.transform.rotation;
+        // Get the child mesh
+        GameObject mesh = newRoomMeshObj.transform.Find("Mesh").gameObject;
+        // Add original mesh to collider and renderer
+        mesh.GetComponent<MeshFilter>().sharedMesh = originalRoomMeshObj.GetComponent<MeshFilter>()?.sharedMesh;
+        mesh.GetComponent<MeshCollider>().sharedMesh = originalRoomMeshObj.GetComponent<MeshCollider>()?.sharedMesh;
+        Debug.Log(
+            "RoomPrepManager - New room newRoomMeshObj: "
+            + "pos " + newRoomMeshObj.transform.position.ToString()
+            + ", rot " + newRoomMeshObj.transform.rotation.ToString()
+            + ", scale " + newRoomMeshObj.transform.localScale.ToString()
+        );
+        Debug.Log(
+            "RoomPrepManager - New room mesh: "
+            + "pos " + mesh.transform.position.ToString()
+            + ", rot " + mesh.transform.rotation.ToString()
+            + ", scale " + mesh.transform.localScale.ToString()
+        );
+        // Add to room meshes for later use
+        // roomMeshes.Add(originalRoomMeshObj);
+        roomMeshes.Add(newRoomMeshObj);
+        Debug.Log("RoomPrepManager - Created new room mesh");
+        // Debug components
+        // Component[] components = sceneVolumeMeshFilter.GetComponents(typeof(Component));
+        // PrintDebugComponents(components);
+        // Destroy original mesh game object
+        Destroy(originalRoomMeshObj);
+        Debug.Log("RoomPrepManager - Destroyed original room mesh");
     }
 
     private void UpdateWall(OVRScenePlane wallPlane)
@@ -140,6 +177,9 @@ public class RoomPrepManager : MonoBehaviour
         GameObject newWall = Instantiate(wallPrefab);
         newWall.transform.position = wall.transform.position;
         newWall.transform.rotation = wall.transform.rotation;
+        // Assign same OVR anchor
+        OVRSceneAnchor newAnchor = newWall.GetComponent<OVRSceneAnchor>();
+        newAnchor = wallAnchor;
         // The transform is done in the child object to avoid issues when rotating
         GameObject cube = newWall.transform.Find("Cube").gameObject;
         cube.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, cube.transform.localScale.z);
@@ -147,9 +187,14 @@ public class RoomPrepManager : MonoBehaviour
         // Debug.Log("RoomPrepManager - New wall rotation " + newWall.transform.rotation.ToString());
         // Remove wall intersections from global mesh
         // ===================
+        // removeWallFromGlobalMesh(roomMeshes[0].transform.Find("Mesh").gameObject, cube);
         // foreach (GameObject roomMesh in roomMeshes)
         // {
-        removeWallFromGlobalMesh(roomMeshes[0], cube);
+            // removeWallFromGlobalMesh(roomMesh.transform.Find("Mesh").gameObject, cube);
+            // CURRENT ISSUES:
+            // 1. The resulting mesh takes time to generate. With all the walls the lag is too much
+            //    Possible test: once 1 is solved, try to remove the renderer (or just make it transparent)
+            // 2. The resutling mesh gets too many parts cut out to the point where it is not usable
         // }
         // ===================
         // Break wall into sections that can be destroyed
@@ -165,19 +210,11 @@ public class RoomPrepManager : MonoBehaviour
     }
 
     private void removeWallFromGlobalMesh(GameObject roomGlobalMesh, GameObject subtractWall)
-    
-    // CURRENT ISSUES:
-    // 1. The resulting mesh is not in place (both position, rotation and scale)
-    // 2. The resulting mesh takes time to generate. With all the walls the lag is too much
-    // 3. The resutling mesh seems to be too complex (and there are some triangles cutting through the room).
-    //    Is there a way to simplify this?
-    
-    // private void removeWallFromGlobalMesh(GameObject roomGlobalMesh)
     {
         // Check all components are available
         MeshFilter gmMeshFilter = roomGlobalMesh.GetComponent<MeshFilter>();
         Mesh gmMeshFilterSharedMesh = roomGlobalMesh.GetComponent<MeshFilter>()?.sharedMesh;
-        Mesh gmMeshFilterMesh = roomGlobalMesh.GetComponent<MeshFilter>()?.mesh;
+        // Mesh gmMeshFilterMesh = roomGlobalMesh.GetComponent<MeshFilter>()?.mesh;
         // if (gmMeshFilterSharedMesh == null && gmMeshFilterMesh != null)
         // {
         //     Debug.Log("RoomPrepManager - Assigning mesh to shared mesh");
