@@ -17,6 +17,7 @@ public class ArmControllerManager : MonoBehaviour
     // Functionalities
     [Header("Functionalities")]
     [SerializeField] private GameObject placePrinter;
+    [SerializeField] private GameObject placeEnemy;
     [SerializeField] private GameObject debugRay;
     // Debugging output
     [Header("Debug Output")]
@@ -76,6 +77,7 @@ public class ArmControllerManager : MonoBehaviour
             debuggingText += "\n";
             debuggingText += "\nFeature statuses:";
             debuggingText += "\nplacePrinter: " + placePrinter?.activeSelf.ToString();
+            debuggingText += "\nplaceEnemy: " + placeEnemy?.activeSelf.ToString();
             debuggingText += "\ndebugRay: " + debugRay?.activeSelf.ToString();
             debugScreenText.text = debuggingText;
         }
@@ -96,6 +98,7 @@ public class ArmControllerManager : MonoBehaviour
     {
         // Set inactive
         placePrinter?.SetActive(false);
+        placeEnemy?.SetActive(false);
         debugRay?.SetActive(false);
     }
 
@@ -119,6 +122,14 @@ public class ArmControllerManager : MonoBehaviour
         placePrinter?.GetComponent<PlaceObject>().togglePreview();
     }
 
+    public void togglePlaceEnemy()
+    {
+        // Activate or deactivate the enemy placement (and its preview object)
+        Debug.Log("ArmControllerManager - Toggle enemy placement");
+        placeEnemy?.SetActive(!placeEnemy.activeSelf);
+        placeEnemy?.GetComponent<PlaceObject>().togglePreview();
+    }
+
     public void toggleDebugRay()
     {
         // Activate or deactivate the debug ray
@@ -138,6 +149,7 @@ public class ArmControllerManager : MonoBehaviour
         if (settingsScreen == null) {Debug.LogError(errorText + "settingsScreen");}
         if (debugScreen == null) {Debug.LogError(errorText + "debugScreen");}
         if (placePrinter == null) {Debug.LogError(errorText + "placePrinter");}
+        if (placeEnemy == null) {Debug.LogError(errorText + "placeEnemy");}
         if (debugRay == null) {Debug.LogError(errorText + "debugRay");}
         if (debugScreenText == null) {Debug.LogError(errorText + "debugScreenText");}
     }

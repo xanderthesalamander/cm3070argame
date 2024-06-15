@@ -6,5 +6,6 @@ public class BulletStats : MonoBehaviour
 {
     // Stats
     public float speed = 10;
+    public float damage = 1;
     public float destroyAfterSeconds = 3;
 }

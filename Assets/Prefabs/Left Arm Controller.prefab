@@ -63,6 +63,7 @@ Transform:
   m_Children:
   - {fileID: 5710981298162087491}
   - {fileID: 4026730492928604972}
+  - {fileID: 5773738994291555684}
   - {fileID: 2977051304853486604}
   m_Father: {fileID: 7231303097936419977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,6 +230,7 @@ MonoBehaviour:
   settingsScreen: {fileID: 9170212171720498440}
   debugScreen: {fileID: 4410789104288434208}
   placePrinter: {fileID: 6552329351231922592}
+  placeEnemy: {fileID: 9007774059033891716}
   debugRay: {fileID: 9103070752001827608}
   debugScreenText: {fileID: 2659368814295624625}
 --- !u!1 &4202647957474849096
@@ -297,6 +299,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7002390366317716393}
+  - {fileID: 2346467792813850543}
   - {fileID: 8663286933113784036}
   m_Father: {fileID: 7231303097936419977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -380,6 +383,54 @@ Transform:
   - {fileID: 5901837641671609407}
   m_Father: {fileID: 7231303097936419977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9007774059033891716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2346467792813850543}
+  - component: {fileID: 7974029269934666429}
+  m_Layer: 0
+  m_Name: Place Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2346467792813850543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007774059033891716}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2826632585345910989}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7974029269934666429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007774059033891716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff70d5dea6ff5490db068097b9cf8715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 5326658790589942451, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
+  objectPreviewPrefab: {fileID: 5901988343378125186, guid: 57c2fbb5e885b4c17819ff008c0dbf26, type: 3}
+  multiplePlacementsAllowed: 1
+  faceController: 0
 --- !u!1 &9103070752001827608
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +582,112 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
   m_PrefabInstance: {fileID: 482124892039348754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1860497047940565301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1387324907358246427}
+    m_Modifications:
+    - target: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_Name
+      value: Button (PlaceEnemy)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.029511806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0026076897
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2089452
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.64758575
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.458304
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49690974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.35166883
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 70.575
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621380023908707964, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_text
+      value: Place Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2025784058160466899}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: togglePlaceEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ArmControllerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+--- !u!4 &5773738994291555684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+  m_PrefabInstance: {fileID: 1860497047940565301}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3838389379070471621
 PrefabInstance:
