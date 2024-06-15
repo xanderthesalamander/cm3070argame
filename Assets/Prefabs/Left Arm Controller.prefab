@@ -344,9 +344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff70d5dea6ff5490db068097b9cf8715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 8787136631746088596, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
-  objectPreviewPrefab: {fileID: 4866226911719255794, guid: 76a40811396f24fd79d5b9a3aaa88d3b, type: 3}
+  objectPrefab: {fileID: 8089840900092260374, guid: dcf6dd38940594c1caab12ff4afecc68, type: 3}
+  objectPreviewPrefab: {fileID: 8089840900092260374, guid: 3a32fb227446b458b8b19b5fda58ae59, type: 3}
   multiplePlacementsAllowed: 0
+  faceController: 1
 --- !u!1 &8687454179013815073
 GameObject:
   m_ObjectHideFlags: 0
