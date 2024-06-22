@@ -183,24 +183,6 @@ public class RoomPrepManager : MonoBehaviour
         // The transform is done in the child object to avoid issues when rotating
         GameObject cube = newWall.transform.Find("Cube").gameObject;
         cube.transform.localScale = new Vector3(wallDimensions.x, wallDimensions.y, cube.transform.localScale.z);
-        // Debug.Log("RoomPrepManager - New wall location " + newWall.transform.position.ToString());
-        // Debug.Log("RoomPrepManager - New wall rotation " + newWall.transform.rotation.ToString());
-        // Remove wall intersections from global mesh
-        // ===================
-        // removeWallFromGlobalMesh(roomMeshes[0].transform.Find("Mesh").gameObject, cube);
-        // foreach (GameObject roomMesh in roomMeshes)
-        // {
-            // removeWallFromGlobalMesh(roomMesh.transform.Find("Mesh").gameObject, cube);
-            // CURRENT ISSUES:
-            // 1. The resulting mesh takes time to generate. With all the walls the lag is too much
-            //    Possible test: once 1 is solved, try to remove the renderer (or just make it transparent)
-            // 2. The resutling mesh gets too many parts cut out to the point where it is not usable
-            // IDEA:
-            // Instead of generating the mesh, it might be possible to use a rule where
-            // if the collider is both in the global mesh AND in the breakable wall, then ignore
-            // (e.g. bullet still goes through, enemies can walk, can see through etc.)
-        // }
-        // ===================
         // Break wall into sections that can be destroyed
         WallBreakable wb = newWall.GetComponent<WallBreakable>();
         if (wb != null)

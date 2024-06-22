@@ -15,7 +15,6 @@ public class PrinterManager : MonoBehaviour
 
     private int currentIndex = 0;
     private int nObjects;
-    
     private GameObject currentPreview;
 
     public void OnDestroy()
@@ -25,7 +24,7 @@ public class PrinterManager : MonoBehaviour
     
     private void Start()
     {
-        //
+        // Check that the objects and their previews have same length
         if (objectPrefabs.Length != objectPreviewPrefabs.Length)
         {
             Debug.LogError(
@@ -39,10 +38,14 @@ public class PrinterManager : MonoBehaviour
 
     public void Update()
     {
+        Preview();    
+    }
+
+    private void Preview()
+    {
         // Show and rotate the preview prefab
         currentPreview.transform.position = placement.position;
         currentPreview.transform.Rotate(0, rotationSpeed, 0, Space.Self);
-        
     }
 
     public void ChangeObjectNext()
