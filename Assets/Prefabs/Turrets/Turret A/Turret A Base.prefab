@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 621691932683869169}
@@ -59,7 +59,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8939147397436948769}
@@ -99,7 +99,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1001815283561905280}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268674838310642211}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 391ff544c2e0142e0b441b895e4e7664, type: 3}
   m_Name: 
@@ -241,8 +241,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5023812, y: 0.10772346, z: 0.50971735}
-  m_Center: {x: 0.004839182, y: 0.014937945, z: 0.005202085}
+  m_Size: {x: 0.25320172, y: 0.049173072, z: 0.2537297}
+  m_Center: {x: -0.0012881756, y: 0.0060873106, z: -0.00024449825}
 --- !u!1 &3046838274597897196
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +255,6 @@ GameObject:
   - component: {fileID: 5702114192422938382}
   - component: {fileID: 8744591131766333784}
   - component: {fileID: 4684264323812908278}
-  - component: {fileID: 4103339706558093269}
   - component: {fileID: 8847901064433858136}
   m_Layer: 0
   m_Name: Attachment Area
@@ -273,8 +272,8 @@ Transform:
   m_GameObject: {fileID: 3046838274597897196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.10623531, z: 0}
-  m_LocalScale: {x: 0.33709, y: 0.04266214, z: 0.33709}
+  m_LocalPosition: {x: 0.0000000064028, y: 0.0587, z: -0.000000012806}
+  m_LocalScale: {x: 0.19224669, y: 0.02433076, z: 0.19224669}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5762622074371445743}
@@ -350,20 +349,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4103339706558093269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3046838274597897196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f038e215a836453c8eeb21a055cf767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: TurretBody
-  attachedObject: {fileID: 0}
 --- !u!114 &8847901064433858136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachableTag: TurretBody
   transformPosition: {fileID: 7481358523198725366}
+  thisRigidbody: {fileID: 273811769582479784}
   attachedObject: {fileID: 0}
 --- !u!1 &3135805389935189428
 GameObject:
@@ -487,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 3900441779542991004}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0174, z: 0}
+  m_LocalPosition: {x: 0.0000000064028, y: -0.003, z: -0.000000012806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

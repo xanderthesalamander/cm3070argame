@@ -9,7 +9,7 @@ public class TurretManager : MonoBehaviour
     private float rotationSpeed = 5.0f;
     private bool isAssembled = false;
     private bool wasAssembled = false;
-    private TurretAttachedObjectRef checkBody;
+    private TurretAttachmentPoint checkBody;
     private GameObject turretBody;
     private GameObject armAttachPointL;
     private Transform armAttachTransformL;
@@ -21,7 +21,7 @@ public class TurretManager : MonoBehaviour
     public void Start()
     {
         // Checks if something is attached to the base
-        checkBody = bodyAttachPoint?.GetComponent<TurretAttachedObjectRef>();
+        checkBody = bodyAttachPoint?.GetComponent<TurretAttachmentPoint>();
     }
 
     private void Update()
@@ -62,10 +62,10 @@ public class TurretManager : MonoBehaviour
                 // Check for left and right arm attach point scripts
                 armAttachPointL = turretBody?.transform.Find("Arm attach point L")?.gameObject;
                 armAttachTransformL = turretBody?.transform.Find("Arm attach transform L");
-                TurretAttachedObjectRef checkArmL = armAttachPointL?.GetComponent<TurretAttachedObjectRef>();
+                TurretAttachmentPoint checkArmL = armAttachPointL?.GetComponent<TurretAttachmentPoint>();
                 armAttachPointR = turretBody?.transform.Find("Arm attach point R")?.gameObject;
                 armAttachTransformR = turretBody?.transform.Find("Arm attach transform R");
-                TurretAttachedObjectRef checkArmR = armAttachPointR?.GetComponent<TurretAttachedObjectRef>();
+                TurretAttachmentPoint checkArmR = armAttachPointR?.GetComponent<TurretAttachmentPoint>();
                 // Check for left and right arms
                 if (checkArmL != null && checkArmR != null)
                 {

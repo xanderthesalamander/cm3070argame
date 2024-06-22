@@ -20,6 +20,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret A Arm Preview
       objectReference: {fileID: 0}
+    - target: {fileID: 1381962334068376572, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381962334068376572, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227018141417979499, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539230769719916862, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539230769719916862, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771679084423450060, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5762622074371445743, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -60,7 +84,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7040061899154291278, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009190704744139983, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 273811769582479784, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
