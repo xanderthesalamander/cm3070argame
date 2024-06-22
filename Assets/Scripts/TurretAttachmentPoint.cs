@@ -41,9 +41,6 @@ public class TurretAttachmentPoint : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // TODO:
-        // Might be better to manage this differently using ontrigger enter and exit to see which colliders are in
-        // and then use FixedUpdate() to manage those
         if (occupied)
         {
             GameObject occupier = attachedObject.GetComponent<Collider>().gameObject;
@@ -131,93 +128,4 @@ public class TurretAttachmentPoint : MonoBehaviour
         bool isGrabbed = turretpartStats.isGrabbed();
         return isGrabbed;
     }
-
-
-    // private void OnTriggerStay(Collider other)
-    // {
-    //     if (other.tag != attachableTag)
-    //     {
-    //         Debug.Log("TurretAttachmentPoint - Object in collider. Tag: " + other.tag.ToString());
-    //         return;
-    //     }
-    //     else
-    //     {
-    //         if (occupied && (other.gameObject != attachedObject))
-    //         {
-    //             Debug.Log("TurretAttachmentPoint - Occupied: " + occupied.ToString());
-    //             return;
-    //         }
-    //         TurretPartStats otherStats = other.GetComponent<TurretPartStats>();
-    //         if (otherStats == null)
-    //         {
-    //             Debug.Log("TurretAttachmentPoint - Object is not a turret part");
-    //         }
-    //         else
-    //         {
-    //             bool isGrabbed = otherStats.isGrabbed();
-    //             Debug.Log("TurretAttachmentPoint - Object is grabbed: " + isGrabbed);
-    //             if (!isGrabbed)
-    //             {
-    //                 // Not grabbed
-    //                 if (occupied)
-    //                 {
-    //                     Debug.Log("TurretAttachmentPoint - Already occupied by object");
-    //                     return;
-    //                 }
-    //                 else
-    //                 {
-    //                     // Attach when grabbed
-    //                     Debug.Log("TurretAttachmentPoint - Attaching object");
-    //                     // Update object position and make child
-    //                     other.transform.position = transformPosition.position;
-    //                     other.transform.rotation = transformPosition.rotation;
-    //                     other.transform.parent = transformPosition.transform;
-    //                     // Rmove physics and forces to keep it in place
-    //                     Rigidbody otherRB = other.GetComponent<Rigidbody>();
-    //                     if (otherRB != null)
-    //                     {
-    //                         otherRB.useGravity = false;
-    //                         otherRB.isKinematic = true;
-    //                         otherStats.rbEdited = true;
-    //                     }
-    //                     // Save object reference
-    //                     Debug.Log("TurretAttachmentPoint - Occupied");
-    //                     occupied = true;
-    //                     attachedObject = other.gameObject;
-    //                 }                    
-    //             }
-    //             else
-    //             {
-    //                 // Grabbed
-
-    //                 // Show preview
-    //                 // TODO
-
-    //                 if (other.gameObject == attachedObject)
-    //                 {
-    //                     // Re-add physics properties to rigid body
-    //                     Debug.Log("TurretAttachmentPoint - Object grabbed - Resetting rb");
-    //                     // Reset parent
-    //                     other.transform.SetParent(null);
-    //                     Rigidbody otherRB = other.GetComponent<Rigidbody>();
-    //                     if (otherRB != null && otherStats.rbEdited)
-    //                     {
-    //                         // Reset original rb
-    //                         otherRB.useGravity = true;
-    //                         otherRB.isKinematic = false;
-    //                         otherStats.rbEdited = false;
-    //                     }
-    //                     Debug.Log("TurretAttachmentPoint - Not occupied");
-    //                     occupied = false;
-    //                     attachedObject = null;
-    //                 }
-    //                 else
-    //                 {
-    //                     // Goes in here when in area and grabbed
-    //                     Debug.Log("TurretAttachmentPoint - Object grabbed - Different object");
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
