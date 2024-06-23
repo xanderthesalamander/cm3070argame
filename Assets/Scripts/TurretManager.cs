@@ -66,7 +66,7 @@ public class TurretManager : MonoBehaviour
                 armAttachPointL = turretBody?.transform.Find("Arm Attach Point L");
                 TurretAttachmentPoint checkArmL = armAttachAreaL?.GetComponent<TurretAttachmentPoint>();
                 armAttachAreaR = turretBody?.transform.Find("Arm Attach Area R")?.gameObject;
-                armAttachPointR = turretBody?.transform.Find("Arm Attach Point L");
+                armAttachPointR = turretBody?.transform.Find("Arm Attach Point R");
                 TurretAttachmentPoint checkArmR = armAttachAreaR?.GetComponent<TurretAttachmentPoint>();
                 // Check for left and right arms
                 if (checkArmL != null && checkArmR != null)
