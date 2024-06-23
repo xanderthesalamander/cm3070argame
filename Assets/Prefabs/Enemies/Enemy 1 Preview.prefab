@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1730513458675313457
+--- !u!1001 &4069603757100040592
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,10 +11,22 @@ PrefabInstance:
     - target: {fileID: 432807728007543664, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 440f5849475624e2a9ae35c7f3c4b810, type: 2}
+      objectReference: {fileID: 2100000, guid: f0ae8684bcc8c450ca698b4408f84041, type: 2}
+    - target: {fileID: 2864533952303573457, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3760257485407765251, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
-      propertyPath: slider
-      value: 
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802094732472637207, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151307998951496615, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4632109716895308824, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,27 +75,25 @@ PrefabInstance:
     - target: {fileID: 5804262690415414984, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 440f5849475624e2a9ae35c7f3c4b810, type: 2}
+      objectReference: {fileID: 2100000, guid: f0ae8684bcc8c450ca698b4408f84041, type: 2}
     - target: {fileID: 8025766212856443162, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8025766212856443162, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8504678659648610133, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 440f5849475624e2a9ae35c7f3c4b810, type: 2}
+      objectReference: {fileID: 2100000, guid: f0ae8684bcc8c450ca698b4408f84041, type: 2}
     - target: {fileID: 9165303973016910465, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 440f5849475624e2a9ae35c7f3c4b810, type: 2}
+      objectReference: {fileID: 2100000, guid: f0ae8684bcc8c450ca698b4408f84041, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4151307998951496615, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
-    - {fileID: 2864533952303573457, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}

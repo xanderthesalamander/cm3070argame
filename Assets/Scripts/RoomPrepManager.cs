@@ -12,8 +12,8 @@ public class RoomPrepManager : MonoBehaviour
     [Tooltip("The prefab to be used to generate walls")]
 
     // ==== TEST
-    [SerializeField] GameObject go1;
-    [SerializeField] GameObject go2;
+    // [SerializeField] GameObject go1;
+    // [SerializeField] GameObject go2;
     [SerializeField] Material highlightMaterial;
     // ==== TEST END
     
@@ -42,7 +42,7 @@ public class RoomPrepManager : MonoBehaviour
         OVRsceneManager.SceneModelLoadedSuccessfully += SceneLoaded;
 
         // ==== TEST
-        CSGSubtractDirectly(go1, go2);
+        // CSGSubtractDirectly(go1, go2);
         // ==== TEST END
     }
 

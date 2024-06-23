@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 5326658790589942451, guid: 55adc8464710543ab8d9c5b3566865b3, type: 3}
-  objectPreviewPrefab: {fileID: 5901988343378125186, guid: 57c2fbb5e885b4c17819ff008c0dbf26, type: 3}
+  objectPreviewPrefab: {fileID: 8184787632184118051, guid: 47ef45a323f7443ad8a42a9908fda48f, type: 3}
   multiplePlacementsAllowed: 1
   faceController: 0
 --- !u!1 &9103070752001827608
