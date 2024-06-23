@@ -10,21 +10,19 @@ public class ObjectTakeDamage : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioSource audioSource;
 
-    // void Start()
-    // {
-    //     audioSource = GetComponent<AudioSource>();
-    // }
-
-    void OnCollisionEnter(Collision collision)
+    // void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag == bulletTag)
+        // if (collision.gameObject.tag == bulletTag)
+        if (collider.gameObject.tag == bulletTag)
         {
             // Play sound
             Debug.Log("1");
             audioSource.PlayOneShot(hitSound);
             // Get bullet damage
             Debug.Log("2");
-            BulletStats bulletStats = collision.gameObject.GetComponent<BulletStats>();
+            // BulletStats bulletStats = collision.gameObject.GetComponent<BulletStats>();
+            BulletStats bulletStats = collider.gameObject.GetComponent<BulletStats>();
             float bullet_damage = bulletStats.damage;
             // Calculate damage
             float damage = damage_multiplier * bullet_damage;
@@ -33,7 +31,8 @@ public class ObjectTakeDamage : MonoBehaviour
             objectHealth.takeDamage(damage);
             // Delete bullet
             Debug.Log("4");
-            Destroy(collision.gameObject);
+            Destroy(collider.gameObject);
+            // Destroy(collision.gameObject);
         }
     }
 }

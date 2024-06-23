@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState state;
+    [Tooltip("Current game state")]
     public static event Action<GameState> OnGameStateChanged;
-    // Debugging output
     [SerializeField] private TextMeshProUGUI debugScreenText;
+    [Tooltip("Debugging output")]
     
     void Awake()
     {
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-
+        
     }
 
     private void DebugManager()
