@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: _rigidbody
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1851165168858086335, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004746840649448556, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2227018141417979499, guid: 2a7190887405243f49273b37e0ff9971, type: 3}
       propertyPath: m_Enabled
       value: 0

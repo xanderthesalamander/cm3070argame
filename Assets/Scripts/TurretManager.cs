@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class TurretManager : MonoBehaviour
 {
-    [SerializeField] GameObject bodyAttachPoint;
+    [SerializeField] GameObject bodyAttachArea;
+    [Tooltip("The turret body attach area (this needs to have a TurretAttachmentPoint component)")]
     [SerializeField] Transform bodyAttachTransform;
+    [Tooltip("The turret body attach transfrom")]
     private float rotationSpeed = 5.0f;
-    private bool isAssembled = false;
+    public bool isAssembled = false;
     private bool wasAssembled = false;
     private TurretAttachmentPoint checkBody;
     private GameObject turretBody;
-    private GameObject armAttachPointL;
-    private Transform armAttachTransformL;
-    private GameObject armAttachPointR;
-    private Transform armAttachTransformR;
+    private GameObject armAttachAreaL;
+    private Transform armAttachPointL;
+    private GameObject armAttachAreaR;
+    private Transform armAttachPointR;
     private GameObject turretArmL;
     private GameObject turretArmR;
 
     public void Start()
     {
         // Checks if something is attached to the base
-        checkBody = bodyAttachPoint?.GetComponent<TurretAttachmentPoint>();
+        checkBody = bodyAttachArea?.GetComponent<TurretAttachmentPoint>();
     }
 
     private void Update()
@@ -32,19 +34,19 @@ public class TurretManager : MonoBehaviour
         // When assembled
         if (isAssembled)
         {
-            turnLights("green");
+            // turnLights("green");
             turnAndShoot();
         }
         else
         {
             // Turret is not fully assembled
-            turnLights("red");
+            // turnLights("red");
             turretBody = null;
+            armAttachAreaL = null;
             armAttachPointL = null;
-            armAttachTransformL = null;
             turretArmL = null;
+            armAttachAreaR = null;
             armAttachPointR = null;
-            armAttachTransformR = null;
             turretArmR = null;
         }
     }
@@ -60,12 +62,12 @@ public class TurretManager : MonoBehaviour
             if (turretBody != null)
             {
                 // Check for left and right arm attach point scripts
-                armAttachPointL = turretBody?.transform.Find("Arm attach point L")?.gameObject;
-                armAttachTransformL = turretBody?.transform.Find("Arm attach transform L");
-                TurretAttachmentPoint checkArmL = armAttachPointL?.GetComponent<TurretAttachmentPoint>();
-                armAttachPointR = turretBody?.transform.Find("Arm attach point R")?.gameObject;
-                armAttachTransformR = turretBody?.transform.Find("Arm attach transform R");
-                TurretAttachmentPoint checkArmR = armAttachPointR?.GetComponent<TurretAttachmentPoint>();
+                armAttachAreaL = turretBody?.transform.Find("Arm Attach Area L")?.gameObject;
+                armAttachPointL = turretBody?.transform.Find("Arm Attach Point L");
+                TurretAttachmentPoint checkArmL = armAttachAreaL?.GetComponent<TurretAttachmentPoint>();
+                armAttachAreaR = turretBody?.transform.Find("Arm Attach Area R")?.gameObject;
+                armAttachPointR = turretBody?.transform.Find("Arm Attach Point L");
+                TurretAttachmentPoint checkArmR = armAttachAreaR?.GetComponent<TurretAttachmentPoint>();
                 // Check for left and right arms
                 if (checkArmL != null && checkArmR != null)
                 {
@@ -99,10 +101,10 @@ public class TurretManager : MonoBehaviour
     private void RotateArmsToTarget(Transform target)
     {
         // Rotate the arms attach transforms (in the body)
-        Quaternion targetRotationL = Quaternion.LookRotation(target.position - armAttachTransformL.position);
-        armAttachTransformL.rotation = Quaternion.Slerp(armAttachTransformL.rotation, targetRotationL, rotationSpeed * Time.deltaTime);
-        Quaternion targetRotationR = Quaternion.LookRotation(target.position - armAttachTransformR.position);
-        armAttachTransformR.rotation = Quaternion.Slerp(armAttachTransformR.rotation, targetRotationR, rotationSpeed * Time.deltaTime);
+        Quaternion targetRotationL = Quaternion.LookRotation(target.position - armAttachPointL.position);
+        armAttachPointL.rotation = Quaternion.Slerp(armAttachPointL.rotation, targetRotationL, rotationSpeed * Time.deltaTime);
+        Quaternion targetRotationR = Quaternion.LookRotation(target.position - armAttachPointR.position);
+        armAttachPointR.rotation = Quaternion.Slerp(armAttachPointR.rotation, targetRotationR, rotationSpeed * Time.deltaTime);
     }
 
     private void turnAndShoot()
@@ -150,43 +152,43 @@ public class TurretManager : MonoBehaviour
         return closestEnemy;
     }
 
-    private void turnLights(string status)
-    {
-        // Get all lights
-        List<Transform> lightContainers = new List<Transform>();
-        Transform turretBaseLights = transform.Find("Lights");
-        if (turretBaseLights != null)
-        {
-            lightContainers.Add(turretBaseLights);
-        }
-        if (turretBody != null) {
-            Transform turretBodyLights = turretBody?.transform.Find("Lights");
-            if (turretBodyLights != null)
-            {
-                lightContainers.Add(turretBodyLights);
-            }
-        }
-        // For each light group
-        foreach (Transform lightsGroup in lightContainers)
-        {
-            if (lightsGroup != null)
-            {
-                // Go trhough each light inside the group
-                foreach (Transform light in lightsGroup)
-                {
-                    TurretLightController lightController = light.GetComponent<TurretLightController>();
-                    if (lightController != null && status == "green")
-                    {
-                       lightController.TurnLightGreen(); 
-                    }
-                    if (lightController != null && status == "red")
-                    {
-                       lightController.TurnLightRed(); 
-                    } 
-                }
-            }
-        }
+    // private void turnLights(string status)
+    // {
+    //     // Get all lights
+    //     List<Transform> lightContainers = new List<Transform>();
+    //     Transform turretBaseLights = transform.Find("Lights");
+    //     if (turretBaseLights != null)
+    //     {
+    //         lightContainers.Add(turretBaseLights);
+    //     }
+    //     if (turretBody != null) {
+    //         Transform turretBodyLights = turretBody?.transform.Find("Lights");
+    //         if (turretBodyLights != null)
+    //         {
+    //             lightContainers.Add(turretBodyLights);
+    //         }
+    //     }
+    //     // For each light group
+    //     foreach (Transform lightsGroup in lightContainers)
+    //     {
+    //         if (lightsGroup != null)
+    //         {
+    //             // Go trhough each light inside the group
+    //             foreach (Transform light in lightsGroup)
+    //             {
+    //                 TurretLightController lightController = light.GetComponent<TurretLightController>();
+    //                 if (lightController != null && status == "green")
+    //                 {
+    //                    lightController.TurnLightGreen(); 
+    //                 }
+    //                 if (lightController != null && status == "red")
+    //                 {
+    //                    lightController.TurnLightRed(); 
+    //                 } 
+    //             }
+    //         }
+    //     }
 
-    }
+    // }
     
 }

@@ -14,7 +14,6 @@ public class TurretAttachmentPoint : MonoBehaviour
     [Tooltip("The rigidbody of this object")]
     public GameObject attachedObject;
     private bool occupied;
-    // private Collider occupyingObject;
     private List<Collider> colliders;
 
     private void Start()

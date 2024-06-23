@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2805931840892666617}
   - component: {fileID: 94512079842525402}
   m_Layer: 0
-  m_Name: Attachment Area 2
+  m_Name: Arm Attach Area R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 4684264323812908278}
   - component: {fileID: 8847901064433858136}
   m_Layer: 0
-  m_Name: Attachment Area 1
+  m_Name: Arm Attach Area L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,7 +652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7481358523198725366}
   m_Layer: 0
-  m_Name: Attachment Point 1
+  m_Name: Arm Attach Point L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,7 +849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4754119376139482903}
   m_Layer: 0
-  m_Name: Attachment Point 2
+  m_Name: Arm Attach Point R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
