@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TurretManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TurretManager : MonoBehaviour
     [Tooltip("The turret body attach area (this needs to have a TurretAttachmentPoint component)")]
     [SerializeField] Transform bodyAttachTransform;
     [Tooltip("The turret body attach transfrom")]
+    [SerializeField] private TextMeshProUGUI debugScreenText;
     private float rotationSpeed = 5.0f;
     public bool isAssembled = false;
     private bool wasAssembled = false;
@@ -31,6 +33,11 @@ public class TurretManager : MonoBehaviour
         wasAssembled = isAssembled;
         // Check if turret is assembled
         isAssembled = CheckAssembled();
+        // Debug screen
+        if (debugScreenText != null)
+        {
+            DebugTurretManager();
+        }
         // When assembled
         if (isAssembled)
         {
@@ -190,5 +197,20 @@ public class TurretManager : MonoBehaviour
     //     }
 
     // }
+
+    private void DebugTurretManager()
+    {
+        if (debugScreenText != null)
+        {
+            string debuggingText = "Debug:";
+            debuggingText += "\n";
+            debuggingText += "\nisAssembled: " + isAssembled.ToString();
+            debuggingText += "\nbodyAttached: " + (turretBody != null).ToString();
+            debuggingText += "\narmLAttached: " + (turretArmL != null).ToString();
+            debuggingText += "\narmRAttached: " + (turretArmR != null).ToString();
+            debuggingText += "\n";
+            debugScreenText.text = debuggingText;
+        }
+    }
     
 }
