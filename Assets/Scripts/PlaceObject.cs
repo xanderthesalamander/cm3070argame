@@ -12,6 +12,7 @@ public class PlaceObject : MonoBehaviour
     [Tooltip("Whether multiple copies of the object can be placed. ")]
     [SerializeField] bool faceController = false;
     [Tooltip("Whether the object should face the player. ")]
+    
     private GameObject currentPreview;
     private GameObject currentObject;
 

@@ -106,6 +106,7 @@ public class ArmControllerManager : MonoBehaviour
     void DeactivateAllScreens()
     {
         // Set inactive
+        setupScreen?.SetActive(false);
         startScreen?.SetActive(false);
         planningScreen?.SetActive(false);
         gameOverScreen?.SetActive(false);
