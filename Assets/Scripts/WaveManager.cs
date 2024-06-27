@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
     [Tooltip("Array of enemy prefabs")]
     public List<GameObject> enemySpawnPoints;
+    [Tooltip("Array of enemy prefabs")]
     [SerializeField] private int maxWaveLevel = 10;
     private int waveLevel = 0;
     private bool waveActive = false;

@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI debugScreenText;
     [Tooltip("Debugging output")]
     
+    // These should be made private after testing
+    public bool isPrinterPlaced = false;
+    
     void Awake()
     {
         instance = this;
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-        
+
     }
 
     private void DebugManager()

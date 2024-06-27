@@ -7,6 +7,7 @@ public class ArmControllerManager : MonoBehaviour
 {
     // Screens
     [Header("Screens")]
+    [SerializeField] private GameObject setupScreen;
     [SerializeField] private GameObject startScreen;
     [SerializeField] private GameObject planningScreen;
     [SerializeField] private GameObject gameOverScreen;
@@ -40,9 +41,28 @@ public class ArmControllerManager : MonoBehaviour
 
     private void GameManagerOnGameStateChanged(GameState state)
     {
+        if (state == GameState.SetupState)
+        {
+            // Game setup - User to press start
+            DeactivateAllScreens();
+            DeactivateAllFunctionalities();
+            updateCurrentScreen(setupScreen);
+        }
         if (state == GameState.GameStart)
         {
-            
+            // Game has started - user to place 3D printer
+            DeactivateAllScreens();
+            DeactivateAllFunctionalities();
+            updateCurrentScreen(startScreen);
+            togglePlacePrinter();
+        }
+        if (state == GameState.PlayerPlanningState)
+        {
+            // Planning phase
+            DeactivateAllScreens();
+            DeactivateAllFunctionalities();
+            updateCurrentScreen(planningScreen);
+            togglePlacePrinter();
         }
     }
 
@@ -152,5 +172,20 @@ public class ArmControllerManager : MonoBehaviour
         if (placeEnemy == null) {Debug.LogError(errorText + "placeEnemy");}
         if (debugRay == null) {Debug.LogError(errorText + "debugRay");}
         if (debugScreenText == null) {Debug.LogError(errorText + "debugScreenText");}
+    }
+
+    public void StartGame()
+    {
+        GameManager.instance.UpdateGameState(GameState.GameStart);
+    }
+
+    public void StartPlanning()
+    {
+        GameManager.instance.UpdateGameState(GameState.PlayerPlanningState);
+    }
+
+    public void StartWave()
+    {
+        GameManager.instance.UpdateGameState(GameState.EnemyWaveState);
     }
 }
