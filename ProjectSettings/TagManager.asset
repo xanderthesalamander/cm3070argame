@@ -10,6 +10,7 @@ TagManager:
   - TurretBase
   - TurretBody
   - TurretArm
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - PhysicsLayerBullets
+  - PhysicsLayerEnemySpawner
   - 
   - 
   - 

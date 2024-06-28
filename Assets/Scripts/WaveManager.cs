@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -9,12 +10,20 @@ public class WaveManager : MonoBehaviour
     [Tooltip("Array of enemy prefabs")]
     public List<GameObject> enemySpawnPoints;
     [Tooltip("Array of enemy prefabs")]
-    [SerializeField] private int maxWaveLevel = 10;
+    [SerializeField] private int enemiesWave1 = 10;
+    [Tooltip("Number of enemies to spawn on first wave")]
+    [SerializeField] private int incrementalEnemies = 5;
+    [Tooltip("Number incremental enemies per wave")]
+    [SerializeField] private int maxWaveLevel = 2;
+    [Tooltip("Number of waves before game ends")]
+    [SerializeField] private TextMeshProUGUI debugScreenText;
+    [Tooltip("Debugging output")]
     private int waveLevel = 0;
     private bool waveActive = false;
     private int currentNumberOfEnemies = 0;
     private int enemiesToBeSpawned = 0;
     private int enemiesSpawned = 0;
+    // This should be a list
     private GameObject[] enemies;
 
     void Awake()
@@ -45,6 +54,7 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DebugManager();
         // During the wave
         if (waveActive)
         {
@@ -111,7 +121,7 @@ public class WaveManager : MonoBehaviour
 
     private void startNewWave()
     {
-        enemiesToBeSpawned = waveLevel * 10 + 10;
+        enemiesToBeSpawned = waveLevel * incrementalEnemies + enemiesWave1;
         enemiesSpawned = 0;
         activateEnemySpawnPoints();
     }
@@ -129,6 +139,29 @@ public class WaveManager : MonoBehaviour
         foreach (GameObject enemySpawnPoint in enemySpawnPoints)
         {
             enemySpawnPoint.SetActive(false);
+        }
+    }
+
+    private void DebugManager()
+    {
+        if (debugScreenText != null)
+        {
+            string debuggingText = "";
+            debuggingText += "Wave Manager:";
+            debuggingText += "\nwaveActive: " + waveActive.ToString();
+            debuggingText += "\nwaveLevel: " + waveLevel.ToString();
+            debuggingText += "\ncurrentNumberOfEnemies: " + currentNumberOfEnemies.ToString();
+            debuggingText += "\nenemiesToBeSpawned: " + enemiesToBeSpawned.ToString();
+            debuggingText += "\nenemiesSpawned: " + enemiesSpawned.ToString();
+            debuggingText += "\n";
+            string enemiesN = "";
+            if (enemies != null)
+            {
+                enemiesN = enemies.Length.ToString();
+            }
+            debuggingText += "\n# of enemies alive: " + enemiesN;
+            debuggingText += "\n";
+            debugScreenText.text = debuggingText;
         }
     }
 }
