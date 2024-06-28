@@ -20,6 +20,9 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private GameObject placePrinter;
     [SerializeField] private GameObject placeEnemy;
     [SerializeField] private GameObject debugRay;
+    // Buttons
+    [Header("Buttons")]
+    [SerializeField] private GameObject placePrinterButton;
     // Debugging output
     [Header("Debug Output")]
     [SerializeField] private TextMeshProUGUI debugScreenText;
@@ -29,8 +32,6 @@ public class ArmControllerManager : MonoBehaviour
         Troubleshooting();
         // Subscribe to the game manager
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
-        // Assign current screen
-        currentScreen = startScreen;
     }
 
     void OnDestroy()
@@ -47,6 +48,7 @@ public class ArmControllerManager : MonoBehaviour
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
             updateCurrentScreen(setupScreen);
+            currentScreen?.SetActive(true);
         }
         if (state == GameState.GameStart)
         {
@@ -54,7 +56,8 @@ public class ArmControllerManager : MonoBehaviour
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
             updateCurrentScreen(startScreen);
-            togglePlacePrinter();
+            placePrinter?.SetActive(true);
+            currentScreen?.SetActive(true);
         }
         if (state == GameState.PlayerPlanningState)
         {
@@ -62,7 +65,17 @@ public class ArmControllerManager : MonoBehaviour
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
             updateCurrentScreen(planningScreen);
-            togglePlacePrinter();
+            currentScreen?.SetActive(true);
+            // Deactivate function and button
+            placePrinter?.GetComponent<PlaceObject>().PreviewOff();
+            placePrinter?.SetActive(false);
+            // placePrinterButton?.SetActive(false);
+        }
+        if (state == GameState.EnemyWaveState)
+        {
+            // Enemy wave
+            DeactivateAllScreens();
+            DeactivateAllFunctionalities();
         }
     }
 
@@ -71,6 +84,9 @@ public class ArmControllerManager : MonoBehaviour
     {
         DeactivateAllScreens();
         DeactivateAllFunctionalities();
+        // Assign current screen
+        currentScreen = setupScreen;
+        currentScreen?.SetActive(true);
     }
 
     // Update is called once per frame
@@ -140,7 +156,7 @@ public class ArmControllerManager : MonoBehaviour
         // Activate or deactivate the printer placement (and its preview object)
         Debug.Log("ArmControllerManager - Toggle printer placement");
         placePrinter?.SetActive(!placePrinter.activeSelf);
-        placePrinter?.GetComponent<PlaceObject>().togglePreview();
+        placePrinter?.GetComponent<PlaceObject>().TogglePreview();
     }
 
     public void togglePlaceEnemy()
@@ -148,7 +164,7 @@ public class ArmControllerManager : MonoBehaviour
         // Activate or deactivate the enemy placement (and its preview object)
         Debug.Log("ArmControllerManager - Toggle enemy placement");
         placeEnemy?.SetActive(!placeEnemy.activeSelf);
-        placeEnemy?.GetComponent<PlaceObject>().togglePreview();
+        placeEnemy?.GetComponent<PlaceObject>().TogglePreview();
     }
 
     public void toggleDebugRay()

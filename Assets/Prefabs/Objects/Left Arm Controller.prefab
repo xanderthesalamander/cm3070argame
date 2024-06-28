@@ -233,6 +233,7 @@ MonoBehaviour:
   placePrinter: {fileID: 6552329351231922592}
   placeEnemy: {fileID: 9007774059033891716}
   debugRay: {fileID: 9103070752001827608}
+  placePrinterButton: {fileID: 5576447804496765755}
   debugScreenText: {fileID: 2659368814295624625}
 --- !u!1 &4202647957474849096
 GameObject:
@@ -353,6 +354,21 @@ MonoBehaviour:
   objectPreviewPrefab: {fileID: 8317580885744689788, guid: 15e0568b70af4405f91139bffdedd8e5, type: 3}
   multiplePlacementsAllowed: 0
   faceController: 1
+  whenPlaced:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2025784058160466899}
+        m_TargetAssemblyTypeName: ArmControllerManager, Assembly-CSharp
+        m_MethodName: StartPlanning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8687454179013815073
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +449,9 @@ MonoBehaviour:
   objectPreviewPrefab: {fileID: 1377100508376924217, guid: 0eae24d1c67c046268a0927dcc41cc9f, type: 3}
   multiplePlacementsAllowed: 1
   faceController: 0
+  whenPlaced:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9103070752001827608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,5 +1613,10 @@ PrefabInstance:
 --- !u!4 &4026730492928604972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+  m_PrefabInstance: {fileID: 9083887163254673277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5576447804496765755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
   m_PrefabInstance: {fileID: 9083887163254673277}
   m_PrefabAsset: {fileID: 0}

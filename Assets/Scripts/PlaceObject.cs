@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlaceObject : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlaceObject : MonoBehaviour
     [Tooltip("Whether multiple copies of the object can be placed. ")]
     [SerializeField] bool faceController = false;
     [Tooltip("Whether the object should face the player. ")]
-    
+    public UnityEvent whenPlaced;
     private GameObject currentPreview;
     private GameObject currentObject;
 
@@ -22,7 +23,6 @@ public class PlaceObject : MonoBehaviour
         currentPreview = Instantiate(objectPreviewPrefab);
         currentObject = Instantiate(objectPrefab);
         currentObject.SetActive(false);
-
     }
 
     public void Update()
@@ -66,13 +66,23 @@ public class PlaceObject : MonoBehaviour
                     currentObject = Instantiate(objectPrefab);
                     currentObject.SetActive(false);
                 }
+                // Trigger event if specified
+                if (whenPlaced != null)
+                {
+                    whenPlaced.Invoke();
+                }
             }
         }
     }
 
-    public void togglePreview()
+    public void TogglePreview()
     {
         // Turn preview object on and off
         currentPreview?.SetActive(!currentPreview.activeSelf);
+    }
+
+    public void PreviewOff()
+    {
+        currentPreview?.SetActive(false);
     }
 }
