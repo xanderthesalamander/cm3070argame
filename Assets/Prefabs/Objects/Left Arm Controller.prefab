@@ -204,6 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5653568230455989756}
   - {fileID: 2826632585345910989}
   - {fileID: 4426137828715478595}
   - {fileID: 689248188444998055}
@@ -360,6 +361,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2025784058160466899}
         m_TargetAssemblyTypeName: ArmControllerManager, Assembly-CSharp
         m_MethodName: StartPlanning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3036169510356299177}
+        m_TargetAssemblyTypeName: EnemySpawnerStartPoint, Assembly-CSharp
+        m_MethodName: SetNoParent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1619,4 +1632,97 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
   m_PrefabInstance: {fileID: 9083887163254673277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9108606372248831759
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7231303097936419977}
+    m_Modifications:
+    - target: {fileID: 662591162572960425, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0266
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0752
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2142
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570509152408923238, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402281848008348561, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+      propertyPath: m_Name
+      value: Enemy Spawners Start Point
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+--- !u!114 &3036169510356299177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6073914614316853926, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+  m_PrefabInstance: {fileID: 9108606372248831759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0244348a9994f53bcf50a5fdaa48df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &5653568230455989756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3467146531075986163, guid: 7296e66dbd34a40bfb005c964c67fd0b, type: 3}
+  m_PrefabInstance: {fileID: 9108606372248831759}
   m_PrefabAsset: {fileID: 0}

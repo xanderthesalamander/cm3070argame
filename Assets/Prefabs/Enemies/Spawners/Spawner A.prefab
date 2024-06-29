@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 581802794529965342}
   - component: {fileID: 1874282146006465322}
   - component: {fileID: 1471392638402631508}
-  - component: {fileID: 3277888863389726281}
   - component: {fileID: 8575405130011215517}
   - component: {fileID: 7915155775910933065}
   m_Layer: 7
@@ -49,6 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5496a9bc0f5ef4523a2fe35df7ebb167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 8575405130011215517}
+  forceMax: 1
+  moveProbabilityThreshold: 0.98
   enemyPrefabs:
   - {fileID: 5326658790589942451, guid: f6e0c1099468942a3b0d691af07dfce8, type: 3}
   - {fileID: 3159145600229520125, guid: 5a8b4d4919e424eefafec57246bf3ec2, type: 3}
@@ -151,21 +153,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3277888863389726281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349674152172282220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a51db5457794b778e59da4e9707403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceMax: 1
-  probabilityThreshold: 0.99
-  rb: {fileID: 8575405130011215517}
 --- !u!54 &8575405130011215517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,7 +178,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &7915155775910933065
 SphereCollider:
@@ -212,7 +199,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6936923187290335413
 GameObject:
@@ -242,7 +229,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32825, y: 0.32825, z: 0.32825}
+  m_LocalScale: {x: 0.10626623, y: 0.10626623, z: 0.10626623}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 581802794529965342}

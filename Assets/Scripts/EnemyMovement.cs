@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RBMoveRandom : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float forceMax = 1.0f;
     [SerializeField] float probabilityThreshold = 0.99f;
@@ -12,7 +12,7 @@ public class RBMoveRandom : MonoBehaviour
     {
         if (rb == null)
         {
-            Debug.LogError("RBMoveRandom - No rigidbody found");
+            Debug.LogError("EnemyMovement - No rigidbody found");
         }
     }
 
