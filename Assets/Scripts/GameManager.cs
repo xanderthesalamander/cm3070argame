@@ -73,11 +73,6 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.EnemyWaveState);
     }
 
-    private void DestroyAllEnemies()
-    {
-
-    }
-
     private void ResetGame()
     {
 

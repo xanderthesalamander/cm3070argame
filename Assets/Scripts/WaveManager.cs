@@ -47,6 +47,14 @@ public class WaveManager : MonoBehaviour
             waveLevel++;
             startNewWave();
             waveActive = true;
+            return;
+        }
+        if (state == GameState.GameStart)
+        {
+            // Start game
+            DestroyAllEnemies();
+            waveLevel = 0;
+            waveActive = false;
         }
     }
 
@@ -85,9 +93,12 @@ public class WaveManager : MonoBehaviour
 
     public void DestroyAllEnemies()
     {
-        foreach (GameObject enemy in enemies)
+        if (enemies != null)
         {
-            Destroy(enemy);
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
         }
     }
 

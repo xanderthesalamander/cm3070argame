@@ -57,6 +57,7 @@ public class ArmControllerManager : MonoBehaviour
             DeactivateAllFunctionalities();
             updateCurrentScreen(startScreen);
             placePrinter?.SetActive(true);
+            placePrinter?.GetComponent<PlaceObject>().PreviewOn();
             currentScreen?.SetActive(true);
         }
         if (state == GameState.PlayerPlanningState)
@@ -76,6 +77,22 @@ public class ArmControllerManager : MonoBehaviour
             // Enemy wave
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
+        }
+        if (state == GameState.VictoryState)
+        {
+            // Victory
+            DeactivateAllScreens();
+            DeactivateAllFunctionalities();
+            updateCurrentScreen(victoryScreen);
+            currentScreen?.SetActive(true);
+        }
+        if (state == GameState.LoseState)
+        {
+            // Victory
+            DeactivateAllScreens();
+            DeactivateAllFunctionalities();
+            updateCurrentScreen(gameOverScreen);
+            currentScreen?.SetActive(true);
         }
     }
 

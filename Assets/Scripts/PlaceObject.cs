@@ -85,4 +85,9 @@ public class PlaceObject : MonoBehaviour
     {
         currentPreview?.SetActive(false);
     }
+
+    public void PreviewOn()
+    {
+        currentPreview?.SetActive(true);
+    }
 }

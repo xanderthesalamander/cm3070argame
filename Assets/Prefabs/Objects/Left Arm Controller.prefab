@@ -909,7 +909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1042,7 +1042,47 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 476411367506473373, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_text
-      value: Victory
+      value: Victory !
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2025784058160466899}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ArmControllerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611806552962231642, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_text
+      value: You won the game!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624046392915173501, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_text
+      value: Press to start a new game
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049767091575801685, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.090001
       objectReference: {fileID: 0}
     - target: {fileID: 3367502702229372710, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1084,13 +1124,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3678757568025139596, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.081
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911401699054694197, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.9
+      objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_Name
       value: Victory Screen
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513046806713548900, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1191,7 +1243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6075838607128650112, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
@@ -1225,6 +1277,48 @@ PrefabInstance:
     - target: {fileID: 476411367506473373, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_text
       value: Game Over
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2025784058160466899}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ArmControllerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119132968310493993, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611806552962231642, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_text
+      value: 'Oh no!
+
+        You lost...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624046392915173501, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_text
+      value: Press to start a new game
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049767091575801685, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 3367502702229372710, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1266,13 +1360,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3678757568025139596, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911401699054694197, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_Name
       value: Game Over Screen
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513046806713548900, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.7999997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1501,7 +1607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
