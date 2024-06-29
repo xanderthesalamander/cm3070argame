@@ -11,6 +11,7 @@ TagManager:
   - TurretBody
   - TurretArm
   - EnemySpawner
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
