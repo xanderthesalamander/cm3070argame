@@ -50,11 +50,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8575405130011215517}
   forceMax: 1
-  moveProbabilityThreshold: 0.97
+  moveProbabilityThreshold: 0.98
   enemyPrefabs:
   - {fileID: 5326658790589942451, guid: f6e0c1099468942a3b0d691af07dfce8, type: 3}
   - {fileID: 3159145600229520125, guid: 5a8b4d4919e424eefafec57246bf3ec2, type: 3}
-  baseProbabilityThreshold: 0.999
+  baseProbabilityThreshold: 0.995
   spawnSound: {fileID: 8300000, guid: 260a606ce3de241c187fa915623559d8, type: 3}
   audioSource: {fileID: 1471392638402631508}
 --- !u!82 &1471392638402631508

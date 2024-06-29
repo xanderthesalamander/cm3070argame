@@ -8,6 +8,7 @@ public class TurretPartStats : MonoBehaviour
 {
     public string partName;
     public int resourceCost;
+    public bool locked = false;
     public bool currentlyGrabbed;
     public bool rbEdited;
     private bool leftGrab;
@@ -21,6 +22,10 @@ public class TurretPartStats : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
+        if (locked)
+        {
+            return;
+        }
         // Check if controllers are grabbing the object
         if (collider.gameObject.name == "ControllerGrabLocation")
         {

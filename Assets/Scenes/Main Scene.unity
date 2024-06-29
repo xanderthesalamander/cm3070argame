@@ -1327,6 +1327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debug Screen WM
       objectReference: {fileID: 0}
+    - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -1558,7 +1562,7 @@ MonoBehaviour:
   - {fileID: 363656119}
   enemiesWave1: 10
   incrementalEnemies: 5
-  maxWaveLevel: 2
+  maxWaveLevel: 3
   debugScreenText: {fileID: 1695631876}
 --- !u!1 &1883652137
 GameObject:
@@ -1676,6 +1680,10 @@ PrefabInstance:
     - target: {fileID: 3773497088055060156, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_Name
       value: Debug Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773497088055060156, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5525540284517756108, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1923,6 +1931,10 @@ PrefabInstance:
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_Name
       value: Debug Screen GM
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_LocalPosition.z

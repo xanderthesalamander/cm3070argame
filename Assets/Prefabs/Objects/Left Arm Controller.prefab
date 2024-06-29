@@ -756,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_LocalScale.x
@@ -1002,6 +1002,10 @@ PrefabInstance:
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_Name
       value: Debug Screen Small Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1410,7 +1414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_LocalScale.x
@@ -1722,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_LocalScale.x
