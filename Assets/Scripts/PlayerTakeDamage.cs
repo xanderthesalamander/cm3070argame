@@ -9,11 +9,15 @@ public class PlayerTakeDamage : MonoBehaviour
     [SerializeField] string bulletTag = "Bullet";
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] Animator animator;
+    private bool isHit;
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == bulletTag)
         {
+            // Animator parameter isHit to trigger animation
+            animator.SetTrigger("isHit");
             // Play sound
             audioSource.PlayOneShot(hitSound);
             // Get bullet damage
