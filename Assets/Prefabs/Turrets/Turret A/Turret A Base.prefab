@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 2539230769719916862}
   - component: {fileID: 273811769582479784}
   - component: {fileID: 4771679084423450060}
+  - component: {fileID: 4107748640797654890}
   m_Layer: 0
   m_Name: Turret A Base
   m_TagString: TurretBase
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partName: Turret Base
   resourceCost: 0
+  locked: 0
   currentlyGrabbed: 0
   rbEdited: 0
 --- !u!114 &1381962334068376572
@@ -247,6 +249,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25320172, y: 0.04656239, z: 0.2537297}
   m_Center: {x: -0.0012881756, y: 0.004781969, z: -0.00024449825}
+--- !u!114 &4107748640797654890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268674838310642211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07954fc0fb37e4bc0994c86e02a79eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Turret A Base
+  itemDescription: 'The base of turret A
+
+    Make sure you attach a body to this'
 --- !u!1 &3046838274597897196
 GameObject:
   m_ObjectHideFlags: 0

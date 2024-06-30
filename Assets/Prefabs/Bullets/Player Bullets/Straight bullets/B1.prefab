@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4832402979343849641}
   - component: {fileID: 6279480936032476865}
   m_Layer: 6
-  m_Name: Bullet 1
+  m_Name: B1
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 5
-  destroyAfterSeconds: 2
+  destroyAfterSeconds: 1

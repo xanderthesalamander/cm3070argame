@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 5247724444763750676}
   - component: {fileID: 8465577861225447156}
   m_Layer: 0
-  m_Name: Button Poke Interactible
+  m_Name: Button Poke Interactible Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

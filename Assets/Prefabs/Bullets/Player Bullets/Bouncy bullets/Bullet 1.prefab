@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -4832402979343849641}
   - component: {fileID: 6279480936032476865}
   m_Layer: 6
-  m_Name: Enemy Bullet 1
-  m_TagString: EnemyBullet
+  m_Name: Bullet 1
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 219a7bf5a70cb44d7b5eb400aefc9bc4, type: 2}
+  - {fileID: 2100000, guid: 4e4cd8b3ba6ed44509f1d2762e11c8cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 5
-  destroyAfterSeconds: 2
+  destroyAfterSeconds: 1
