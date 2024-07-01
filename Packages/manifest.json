@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.dgreenheck.openfracture": "https://github.com/dgreenheck/OpenFracture.git",
     "com.meta.xr.depthapi": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi",
     "com.meta.xr.depthapi.urp": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi.urp",
     "com.meta.xr.sdk.all": "64.0.0",

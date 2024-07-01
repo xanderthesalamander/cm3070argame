@@ -10,6 +10,9 @@ public class RoomPrepManager : MonoBehaviour
     [Tooltip("The prefab to be used to generate the room prefab")]
     [SerializeField] GameObject wallPrefab;
     [Tooltip("The prefab to be used to generate walls")]
+    [SerializeField] GameObject cellPrefab;
+    private List<GameObject> cells = new List<GameObject>();
+    private float cellSize;
 
     // ==== TEST
     // [SerializeField] GameObject go1;
@@ -20,6 +23,8 @@ public class RoomPrepManager : MonoBehaviour
     private OVRSceneManager OVRsceneManager;
     private OVRSceneRoom sceneRoom;
     private OVRScenePlane[] wallPlanes;
+    private OVRScenePlane floor;
+    private OVRScenePlane ceiling;
     private OVRSceneVolumeMeshFilter[] sceneVolumeMeshFilters;
     private List<GameObject> roomMeshes = new List<GameObject>();
     // private List<GameObject> newWalls;
@@ -49,7 +54,7 @@ public class RoomPrepManager : MonoBehaviour
     private void SceneLoaded()
     {
         GetRoomMeshes();
-        GetWalls();
+        GetRoomPlanes();
     }
 
     private void GetRoomMeshes()
@@ -73,13 +78,23 @@ public class RoomPrepManager : MonoBehaviour
         globalMeshUpdated = allMeshesCompleted;
     }
 
-    private void GetWalls()
+    private void GetRoomPlanes()
     {
         // Get the room walls
         sceneRoom = FindObjectOfType<OVRSceneRoom>();
         Debug.Log("RoomPrepManager - Finding walls");
         wallPlanes = sceneRoom.Walls;
         Debug.Log("RoomPrepManager - " + wallPlanes.Length.ToString() + " walls found");
+        floor = sceneRoom.Floor;
+        if (floor != null)
+        {
+            Debug.Log("RoomPrepManager - Floor found");
+        }
+        ceiling = sceneRoom.Ceiling;
+        if (ceiling != null)
+        {
+            Debug.Log("RoomPrepManager - Ceiling found");
+        }
     }
 
     private void Update()
@@ -88,21 +103,10 @@ public class RoomPrepManager : MonoBehaviour
         {
             if (globalMeshUpdated == true)
             {
-                if (globalMeshReplaced == false)
-                {
-                    roomMeshes = new List<GameObject>();
-                    UpdateRoomMesh(sceneVolumeMeshFilters[0]);
-                    globalMeshReplaced = true;
-                }
-                
                 if (roomUpdated == false)
                 {
-                    // GetRoomMeshes();
                     // Update walls
                     Debug.Log("RoomPrepManager - Updating walls");
-                    // UpdateWall(wallPlanes[0]);
-                    // UpdateWall(wallPlanes[1]);
-                    // UpdateWall(wallPlanes[2]);
                     foreach (OVRScenePlane wallPlane in wallPlanes)
                     {
                         UpdateWall(wallPlane);
@@ -110,6 +114,17 @@ public class RoomPrepManager : MonoBehaviour
                     Debug.Log("RoomPrepManager - Walls updated");
                     roomUpdated = true;
                 }
+                
+                if (globalMeshReplaced == false)
+                {
+                    roomMeshes = new List<GameObject>();
+                    RoomCellsCreate();
+                    RoomCellsFilter();
+                    RemoveGlobalMesh();
+                    globalMeshReplaced = true;
+                }
+                
+                
             }
             else
             {
@@ -118,47 +133,99 @@ public class RoomPrepManager : MonoBehaviour
         }
     }
 
-    private void UpdateRoomMesh(OVRSceneVolumeMeshFilter sceneVolumeMeshFilter)
+    private void RoomCellsCreate()
     {
-        // Update mesh (replace with custom)
-        // Get mesh game object
-        GameObject originalRoomMeshObj = sceneVolumeMeshFilter.transform.gameObject;
-        // Get position
-        Vector3 originalPosition = sceneVolumeMeshFilter.transform.position;
-        // Get OVSSceneAnchor
-        OVRSceneAnchor originalAnchor = sceneVolumeMeshFilter.GetComponent<OVRSceneAnchor>();
-        // Place wall prefab
-        Debug.Log("RoomPrepManager - Create new room mesh");
-        GameObject newRoomMeshObj = Instantiate(roomMeshPrefab);
-        newRoomMeshObj.transform.position = originalRoomMeshObj.transform.position;
-        newRoomMeshObj.transform.rotation = originalRoomMeshObj.transform.rotation;
-        // Get the child mesh
-        GameObject mesh = newRoomMeshObj.transform.Find("Mesh").gameObject;
-        // Add original mesh to collider and renderer
-        mesh.GetComponent<MeshFilter>().sharedMesh = originalRoomMeshObj.GetComponent<MeshFilter>()?.sharedMesh;
-        mesh.GetComponent<MeshCollider>().sharedMesh = originalRoomMeshObj.GetComponent<MeshCollider>()?.sharedMesh;
-        Debug.Log(
-            "RoomPrepManager - New room newRoomMeshObj: "
-            + "pos " + newRoomMeshObj.transform.position.ToString()
-            + ", rot " + newRoomMeshObj.transform.rotation.ToString()
-            + ", scale " + newRoomMeshObj.transform.localScale.ToString()
-        );
-        Debug.Log(
-            "RoomPrepManager - New room mesh: "
-            + "pos " + mesh.transform.position.ToString()
-            + ", rot " + mesh.transform.rotation.ToString()
-            + ", scale " + mesh.transform.localScale.ToString()
-        );
-        // Add to room meshes for later use
-        // roomMeshes.Add(originalRoomMeshObj);
-        roomMeshes.Add(newRoomMeshObj);
-        Debug.Log("RoomPrepManager - Created new room mesh");
-        // Debug components
-        // Component[] components = sceneVolumeMeshFilter.GetComponents(typeof(Component));
-        // PrintDebugComponents(components);
-        // Destroy original mesh game object
-        Destroy(originalRoomMeshObj);
-        Debug.Log("RoomPrepManager - Destroyed original room mesh");
+        // Create cells all around the room
+        // Use floor and ceiling to get dimension
+        float xmin = floor.transform.position.x - floor.transform.lossyScale.x / 2;
+        float xmax = floor.transform.position.x + floor.transform.lossyScale.x / 2;
+        float ymin = floor.transform.position.y;
+        float ymax = ceiling.transform.position.y;
+        float zmin = floor.transform.position.z - floor.transform.lossyScale.z / 2;
+        float zmax = floor.transform.position.z + floor.transform.lossyScale.z / 2;
+        float vol_width = xmax - xmin;
+        float vol_height = ymax - ymin;
+        float vol_length = zmax - zmin;
+        vol_width = vol_height * 4;
+        vol_length = vol_height * 4;
+        // TODO: Not ideal
+        cellSize = cellPrefab.transform.lossyScale.x;
+        float cell_width = cellSize;
+        float cell_height = cellSize;
+        float cell_length = cellSize;
+        //
+        float xitems = vol_width / cellSize;
+        float yitems = vol_height / cellSize;
+        float zitems = vol_length / cellSize;
+        int nx = (int)xitems;
+        int ny = (int)yitems;
+        int nz = (int)zitems;
+        Vector3 startPos = new Vector3(xmin, ymin, zmin) - new Vector3(vol_width/2, 0, vol_length/2) + new Vector3(cell_width / 2, cell_height / 2, cell_length / 2);;
+        // This is to resize the cell prefab
+        Vector3 prefabSize = cellPrefab.GetComponent<Renderer>().bounds.size;
+        for (int i = 0; i < nx; i++)
+        {
+            for (int j = 0; j < ny; j++)
+            {
+                for (int k = 0; k < nz; k++)
+                {
+                    Vector3 cellPosition = startPos + new Vector3(i * cell_width, j * cell_height, k * cell_length);
+                    Collider[] hitColliders = Physics.OverlapSphere(cellPosition, (cellSize / 2) - 0.01f);
+                    foreach (Collider other in hitColliders)
+                    {
+                        if (other.gameObject.tag == "RoomGlobalMesh")
+                        {
+                            GameObject cell = Instantiate(cellPrefab, cellPosition, Quaternion.identity);
+                            cells.Add(cell);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        Debug.Log("RoomPrepManager - " + cells.Count.ToString() + " cells created");
+        Debug.LogError("RoomPrepManager - " + cells.Count.ToString() + " cells created");
+    }
+
+    private void RoomCellsFilter()
+    {
+        int cellDestroyed = 0;
+        // Only keep the cells intersecting with the room mesh
+        string[] TagList = {"Wall", "Ceiling"};
+        foreach (GameObject cell in cells)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(cell.transform.position, (cellSize / 2) - 0.01f);
+            bool breakTag = false;
+            foreach (Collider other in hitColliders)
+            {
+                foreach (string tag in TagList)
+                {
+                    if (other.gameObject.tag == tag)
+                    {
+                        Destroy(cell);
+                        breakTag = true;
+                        cellDestroyed++;
+                        break;
+                    }
+                }
+                if (breakTag)
+                {
+                    break;
+                }
+            }
+        }
+        Debug.Log("RoomPrepManager - " + cellDestroyed.ToString() + " cells removed");
+        Debug.LogError("RoomPrepManager - " + cellDestroyed.ToString() + " cells removed");
+    }
+
+    private void RemoveGlobalMesh()
+    {
+        GameObject[] globalMeshes = GameObject.FindGameObjectsWithTag("RoomGlobalMesh");
+        foreach (GameObject go in globalMeshes)
+        {
+            go.SetActive(false);
+            Debug.Log("RoomPrepManager - Global mesh deactivated");
+        }
     }
 
     private void UpdateWall(OVRScenePlane wallPlane)
@@ -195,110 +262,31 @@ public class RoomPrepManager : MonoBehaviour
 
     }
 
-    private void removeWallFromGlobalMesh(GameObject roomGlobalMesh, GameObject subtractWall)
-    {
-        // Check all components are available
-        MeshFilter gmMeshFilter = roomGlobalMesh.GetComponent<MeshFilter>();
-        Mesh gmMeshFilterSharedMesh = roomGlobalMesh.GetComponent<MeshFilter>()?.sharedMesh;
-        // Mesh gmMeshFilterMesh = roomGlobalMesh.GetComponent<MeshFilter>()?.mesh;
-        // if (gmMeshFilterSharedMesh == null && gmMeshFilterMesh != null)
-        // {
-        //     Debug.Log("RoomPrepManager - Assigning mesh to shared mesh");
-        //     gmMeshFilterSharedMesh = gmMeshFilterMesh;
-        // }
-        MeshRenderer gmMeshRenderer = roomGlobalMesh.GetComponent<MeshRenderer>();
-        MeshCollider gmMeshCollider = roomGlobalMesh.GetComponent<MeshCollider>();
-        MeshFilter wallMeshFilter = subtractWall.GetComponent<MeshFilter>();
-        Mesh wallMeshFilterSharedMesh = subtractWall.GetComponent<MeshFilter>()?.sharedMesh;
-        Mesh wallMeshFilterMesh = subtractWall.GetComponent<MeshFilter>()?.mesh;
-        MeshRenderer wallMeshRenderer = subtractWall.GetComponent<MeshRenderer>();
-        if (
-            gmMeshFilterSharedMesh != null && gmMeshFilter != null && gmMeshRenderer != null
-            && wallMeshFilterSharedMesh != null && wallMeshFilter != null && wallMeshRenderer != null
-        )
-        {
-            try
-            {
-                Debug.Log("RoomPrepManager - Subtracting wall");
-                // Subtract wall
-                Model result = CSG.Subtract(roomGlobalMesh, subtractWall);
-                // Update mesh, collider and material
-                gmMeshFilter.sharedMesh = result.mesh;
-                if (gmMeshCollider != null)
-                {
-                    gmMeshCollider.sharedMesh = result.mesh;
-                }
-                gmMeshRenderer.sharedMaterials = result.materials.ToArray();
-                gmMeshRenderer.material = highlightMaterial;
-                // Need to set the position, scale and rotation of object 1 to default,
-                // as those are already taken into account in the resulting mesh
-                // If this step is not done, the mesh will be adding the position, scale and rotation on top
-                roomGlobalMesh.transform.position = new Vector3(0, 0, 0);
-                roomGlobalMesh.transform.rotation = Quaternion.identity;
-                // roomGlobalMesh.transform.localScale = new Vector3(1, 1, 1);
-                Debug.Log("RoomPrepManager - Global mesh updated");
-                }
-            catch (Exception e)
-            {
-                Debug.LogError("ERROR - RoomPrepManager: " + e.ToString());
-            }
-        }
-        else
-        {
-            // Log error on missing component
-            Debug.LogError("RoomPrepManager - missing component");
-            if (gmMeshFilterSharedMesh == null)
-            {
-                Debug.LogError("RoomPrepManager - missing SharedMesh from room mesh");
-            }
-            if (gmMeshFilter == null)
-            {
-                Debug.LogError("RoomPrepManager - missing MeshFilter from room mesh");
-            }
-            if (gmMeshRenderer == null)
-            {
-                Debug.LogError("RoomPrepManager - missing MeshRenderer from room mesh");
-            }
-            if (wallMeshFilterSharedMesh == null)
-            {
-                Debug.LogError("RoomPrepManager - missing SharedMesh from wall mesh");
-            }
-            if (wallMeshFilter == null)
-            {
-                Debug.LogError("RoomPrepManager - missing MeshFilter from wall mesh");
-            }
-            if (wallMeshRenderer == null)
-            {
-                Debug.LogError("RoomPrepManager - missing MeshRenderer from wall mesh");
-            }
-        }
-    }
+    // private void CSGSubtractDirectly(GameObject gameObj1, GameObject gameObj2)
+    // {
+    //     Debug.Log("RoomPrepManager - Subtracting meshes");
+    //     // Subtract game object 2 from geme object 1
+    //     Model result = CSG.Subtract(gameObj1, gameObj2);
+    //     // Update mesh and material on game object 1
+    //     MeshFilter gameObj1MeshFilter = gameObj1.GetComponent<MeshFilter>();
+    //     MeshCollider gameObj1MeshCollider = gameObj1.GetComponent<MeshCollider>();
+    //     MeshRenderer gameObj1MeshRenderer = gameObj1.GetComponent<MeshRenderer>();
+    //     gameObj1MeshFilter.sharedMesh = result.mesh;
+    //     if (gameObj1MeshCollider != null)
+    //     {
+    //         gameObj1MeshCollider.sharedMesh = result.mesh;
+    //     }
+    //     gameObj1MeshRenderer.sharedMaterials = result.materials.ToArray();
+    //     gameObj1MeshRenderer.material = highlightMaterial;
 
-    private void CSGSubtractDirectly(GameObject gameObj1, GameObject gameObj2)
-    {
-        Debug.Log("RoomPrepManager - Subtracting meshes");
-        // Subtract game object 2 from geme object 1
-        Model result = CSG.Subtract(gameObj1, gameObj2);
-        // Update mesh and material on game object 1
-        MeshFilter gameObj1MeshFilter = gameObj1.GetComponent<MeshFilter>();
-        MeshCollider gameObj1MeshCollider = gameObj1.GetComponent<MeshCollider>();
-        MeshRenderer gameObj1MeshRenderer = gameObj1.GetComponent<MeshRenderer>();
-        gameObj1MeshFilter.sharedMesh = result.mesh;
-        if (gameObj1MeshCollider != null)
-        {
-            gameObj1MeshCollider.sharedMesh = result.mesh;
-        }
-        gameObj1MeshRenderer.sharedMaterials = result.materials.ToArray();
-        gameObj1MeshRenderer.material = highlightMaterial;
-
-        // Need to set the position, scale and rotation of object 1 to default,
-        // as those are already taken into account in the resulting mesh
-        // If this step is not done, the mesh will be adding the position, scale and rotation on top
-        gameObj1.transform.position = new Vector3(0, 0, 0);
-        gameObj1.transform.rotation = Quaternion.identity;
-        gameObj1.transform.localScale = new Vector3(1, 1, 1);
-        Debug.Log("RoomPrepManager - Updated");
-    }
+    //     // Need to set the position, scale and rotation of object 1 to default,
+    //     // as those are already taken into account in the resulting mesh
+    //     // If this step is not done, the mesh will be adding the position, scale and rotation on top
+    //     gameObj1.transform.position = new Vector3(0, 0, 0);
+    //     gameObj1.transform.rotation = Quaternion.identity;
+    //     gameObj1.transform.localScale = new Vector3(1, 1, 1);
+    //     Debug.Log("RoomPrepManager - Updated");
+    // }
 
     private void PrintDebugComponents(Component[] components)
     {
