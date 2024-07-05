@@ -16,14 +16,12 @@ public class TutorialManager : MonoBehaviour
     public void ShowPrevTutorial()
     {
         i = (i + n - 1) % n;
-        Debug.LogError("TutorialManager - Previous: " + i.ToString());
         ShowTutorial();
     }
 
     public void ShowNextTutorial()
     {
         i = (i + n + 1) % n;
-        Debug.LogError("TutorialManager - Next: " + i.ToString());
         ShowTutorial();
     }
 
