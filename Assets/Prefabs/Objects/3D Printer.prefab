@@ -1670,8 +1670,10 @@ MonoBehaviour:
   - {fileID: 4110219731248672040, guid: 3a81ff15266f4462196a661c4399d980, type: 3}
   turretPrefabs:
   - {fileID: 6832654409722535757, guid: ed78e52b23e5046279433bb71e352ee3, type: 3}
+  - {fileID: 6832654409722535757, guid: 3b6bca60df9c8457ca0e9f1b2f899357, type: 3}
   turretPreviewPrefabs:
   - {fileID: 2286504920490331935, guid: ae3b1a42392a6481e98584a54e4b3ca8, type: 3}
+  - {fileID: 2286504920490331935, guid: 95a46b93fc89e41d6b0fdc61a95e834f, type: 3}
 --- !u!1 &8839127345649552577
 GameObject:
   m_ObjectHideFlags: 0
