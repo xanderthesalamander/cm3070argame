@@ -20,9 +20,15 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private GameObject placePrinter;
     [SerializeField] private GameObject placeEnemy;
     [SerializeField] private GameObject debugRay;
+    [SerializeField] private GameObject tutorials;
     // Buttons
     [Header("Buttons")]
-    [SerializeField] private GameObject placePrinterButton;
+    [SerializeField] private GameObject toggleScreenButton;
+    [SerializeField] private GameObject tutorialButton;
+    // Debugging output
+    [Header("Tutorials")]
+    [SerializeField] private GameObject tutorialPressButton;
+    [SerializeField] private GameObject tutorialPlacePrinter;
     // Debugging output
     [Header("Debug Output")]
     [SerializeField] private TextMeshProUGUI debugScreenText;
@@ -47,8 +53,11 @@ public class ArmControllerManager : MonoBehaviour
             // Game setup - User to press start
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
+            DeactivateAllButtons();
             updateCurrentScreen(setupScreen);
             currentScreen?.SetActive(true);
+            DeactivateAllTutorials();
+            tutorialPressButton?.SetActive(true);
         }
         if (state == GameState.GameStart)
         {
@@ -59,6 +68,10 @@ public class ArmControllerManager : MonoBehaviour
             placePrinter?.SetActive(true);
             placePrinter?.GetComponent<PlaceObject>().PreviewOn();
             currentScreen?.SetActive(true);
+            DeactivateAllButtons();
+            toggleScreenButton?.SetActive(true);
+            DeactivateAllTutorials();
+            tutorialPlacePrinter?.SetActive(true);
         }
         if (state == GameState.PlayerPlanningState)
         {
@@ -70,7 +83,11 @@ public class ArmControllerManager : MonoBehaviour
             // Deactivate function and button
             placePrinter?.GetComponent<PlaceObject>().PreviewOff();
             placePrinter?.SetActive(false);
+            DeactivateAllButtons();
+            toggleScreenButton?.SetActive(true);
+            tutorialButton?.SetActive(true);
             // placePrinterButton?.SetActive(false);
+            DeactivateAllTutorials();
         }
         if (state == GameState.EnemyWaveState)
         {
@@ -101,6 +118,7 @@ public class ArmControllerManager : MonoBehaviour
     {
         DeactivateAllScreens();
         DeactivateAllFunctionalities();
+        DeactivateAllButtons();
         // Assign current screen
         currentScreen = setupScreen;
         currentScreen?.SetActive(true);
@@ -132,6 +150,7 @@ public class ArmControllerManager : MonoBehaviour
             debuggingText += "\nplacePrinter: " + placePrinter?.activeSelf.ToString();
             debuggingText += "\nplaceEnemy: " + placeEnemy?.activeSelf.ToString();
             debuggingText += "\ndebugRay: " + debugRay?.activeSelf.ToString();
+            debuggingText += "\ntutorials: " + tutorials?.activeSelf.ToString();
             debugScreenText.text = debuggingText;
         }
     }
@@ -154,6 +173,21 @@ public class ArmControllerManager : MonoBehaviour
         placePrinter?.SetActive(false);
         placeEnemy?.SetActive(false);
         debugRay?.SetActive(false);
+        tutorials?.SetActive(false);
+    }
+
+    void DeactivateAllTutorials()
+    {
+        
+        tutorialPressButton?.SetActive(false);
+        tutorialPlacePrinter?.SetActive(false);
+    }
+
+    void DeactivateAllButtons()
+    {
+        
+        toggleScreenButton?.SetActive(false);
+        tutorialButton?.SetActive(false);
     }
 
     private void updateCurrentScreen(GameObject screen)
@@ -190,6 +224,13 @@ public class ArmControllerManager : MonoBehaviour
         Debug.Log("ArmControllerManager - Toggle debug ray");
         debugRay?.SetActive(!debugRay.activeSelf);
         debugRay?.GetComponent<DebugRay>().toggleDebugRay();
+    }
+
+    public void toggleTutorial()
+    {
+        // Activate or deactivate the tutorials
+        Debug.Log("ArmControllerManager - Toggle tutorial");
+        tutorials?.SetActive(!tutorials.activeSelf);
     }
 
     private void Troubleshooting()

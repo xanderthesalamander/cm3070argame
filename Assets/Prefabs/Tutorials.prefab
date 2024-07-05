@@ -218,6 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8656762571549134320}
+  tutorialAnimation: animatorIdle
+  i: 0
 --- !u!1 &5252873976718707891
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +252,7 @@ Transform:
   - {fileID: 1384918954250444188}
   - {fileID: 8594553980573316453}
   - {fileID: 1873176449592771055}
+  - {fileID: 1685160234276183954}
   m_Father: {fileID: 4314008929212252396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8440144237695610939
@@ -335,6 +338,84 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &7022411494082643
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4211129353461472199}
+    m_Modifications:
+    - target: {fileID: 242329130682617439, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_text
+      value: USE OBJECT
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1228
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903663937292223985, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_text
+      value: 'While grabbing an object, you can use it by pressing the front trigger
+
+
+        This
+        can be used to shoot with guns'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342428910642141226, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_Name
+      value: Use Object Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342428910642141226, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+--- !u!4 &1685160234276183954 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1691689446068918209, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
+  m_PrefabInstance: {fileID: 7022411494082643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &288424114512595744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -555,11 +636,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903663937292223985, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
       propertyPath: m_text
-      value: 'To grab an object, press the side trigger
+      value: 'To grab an object, press the side trigger. Releasing the trigger will
+        release the object
 
 
-        Releasing the trigger
-        will release the object'
+        Use this to hold objects and use them, or place
+        them around you'
       objectReference: {fileID: 0}
     - target: {fileID: 8342428910642141226, guid: b2028ec75e5ab4c7cadb1bd7ea1d5093, type: 3}
       propertyPath: m_Name
