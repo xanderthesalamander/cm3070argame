@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    // TODO: This needs cleanup - rushing in for playtest (tech debt)
     [SerializeField] Animator animator;
     [Tooltip("Tutorial animator")]
     public string tutorialAnimation = "animatorIdle";
