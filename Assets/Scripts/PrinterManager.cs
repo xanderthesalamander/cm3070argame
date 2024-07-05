@@ -10,6 +10,8 @@ public class PrinterManager : MonoBehaviour
     [Tooltip("The location where the object should be created")]
     [SerializeField] float rotationSpeed = 1.0f;
     [Tooltip("A prefab of the preview object (this is shown before placement)")]
+    [SerializeField] private TextMeshProUGUI costScreenText;
+    [Tooltip("Where to display the cost")]
     [SerializeField] private TextMeshProUGUI catNameScreenText;
     [Tooltip("Where to display the category name")]
     [SerializeField] private TextMeshProUGUI catDescriptionScreenText;
@@ -43,9 +45,13 @@ public class PrinterManager : MonoBehaviour
     private GameObject currentPreview;
     private string currentItemName;
     private string currentItemDescription;
+    private int currentItemCost;
     private GameObject[][] categoriesPrefabs;
     private GameObject[][] categoriesPrefabsPreviews;
     private int currentCatIndex = 0;
+    private ResourceManager resourceManager;
+    private bool enoughResources;
+    
 
     public void OnDestroy()
     {
@@ -54,6 +60,11 @@ public class PrinterManager : MonoBehaviour
     
     private void Start()
     {
+        resourceManager = GameObject.Find("ResourceManager").GetComponent<ResourceManager>();
+        if (resourceManager == null)
+        {
+            Debug.LogError("PrinterManager - Resource Manager not found");
+        }
         // Check that the objects and their previews have same length
         if (gunPrefabs.Length != gunPreviewPrefabs.Length)
         {
@@ -133,17 +144,29 @@ public class PrinterManager : MonoBehaviour
 
     public void PrintObject()
     {
-        // Place object
-        GameObject newObject = Instantiate(objectPrefabs[currentIndex]);
-        newObject.transform.position = placement.position;
-        newObject.transform.rotation = currentPreview.transform.rotation;
-        newObject.SetActive(true);
+        if (enoughResources)
+        {
+            // Pay resources
+            resourceManager.RemoveResource(currentItemCost);
+            // Place object
+            GameObject newObject = Instantiate(objectPrefabs[currentIndex]);
+            newObject.transform.position = placement.position;
+            newObject.transform.rotation = currentPreview.transform.rotation;
+            newObject.SetActive(true);
+            // Re-calculate for multiple prints
+            enoughResources = currentItemCost <= resourceManager.GetCurrentResources();
+        }
+        else
+        {
+            Debug.Log("Not enough resources");
+        }
     }
 
     private void updateItemDetails()
     {
         currentItemName = currentPreview.GetComponent<PrinterItemDetails>().itemName;
         currentItemDescription = currentPreview.GetComponent<PrinterItemDetails>().itemDescription;
+        currentItemCost = currentPreview.GetComponent<PrinterItemDetails>().itemCost;
         if (itemNameScreenText != null)
         {
             itemNameScreenText.text = currentItemName;
@@ -152,6 +175,11 @@ public class PrinterManager : MonoBehaviour
         {
             itemDescriptionScreenText.text = currentItemDescription;
         }
+        if (costScreenText != null)
+        {
+            costScreenText.text = currentItemCost.ToString();
+        }
+        enoughResources = currentItemCost <= resourceManager.GetCurrentResources();
     }
 
     private void updateCategoryDetails()

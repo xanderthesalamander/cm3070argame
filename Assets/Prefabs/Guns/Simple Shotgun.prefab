@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Simple Shotgun
   itemDescription: A simple shotgun
-  itemCost: 200
+  itemCost: 40
 --- !u!1001 &3175938108108395637
 PrefabInstance:
   m_ObjectHideFlags: 0

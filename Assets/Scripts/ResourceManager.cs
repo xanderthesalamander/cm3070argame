@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ResourceManager : MonoBehaviour
 {
     public int initialResources = 0;
+    [SerializeField] private TextMeshProUGUI resourcesScreen;
+    [Tooltip("Debugging output")]
     private int resources = 0;
     private int activeTurrets = 0;
 
@@ -26,6 +29,7 @@ public class ResourceManager : MonoBehaviour
         {
             // Reset resources on game start
             resources = initialResources;
+            DisplayResources();
         }
     }
 
@@ -42,11 +46,13 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(int value)
     {
         resources += value;
+        DisplayResources();
     }
 
     public void RemoveResource(int value)
     {
         resources -= value;
+        DisplayResources();
     }
 
     public void AddActiveTurret()
@@ -57,5 +63,13 @@ public class ResourceManager : MonoBehaviour
     public void RemoveActiveTurret()
     {
         activeTurrets--;
+    }
+
+    private void DisplayResources()
+    {
+        if (resourcesScreen != null)
+        {
+            resourcesScreen.text = resources.ToString();
+        }
     }
 }

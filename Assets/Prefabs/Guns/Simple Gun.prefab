@@ -993,7 +993,7 @@ MonoBehaviour:
   itemDescription: 'A simple gun that does its job
 
     Not very powerful'
-  itemCost: 100
+  itemCost: 30
 --- !u!1001 &3175938108108395637
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -992,6 +992,7 @@ MonoBehaviour:
   itemName: Debug Gun
   itemDescription: This gun is used for debugging, but you can use it to play as
     well
+  itemCost: 30
 --- !u!1001 &3175938108108395637
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -231,6 +231,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8523322153828450820, guid: ed78e52b23e5046279433bb71e352ee3, type: 3}
+      propertyPath: itemCost
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523322153828450820, guid: ed78e52b23e5046279433bb71e352ee3, type: 3}
       propertyPath: itemName
       value: Turret B
       objectReference: {fileID: 0}
