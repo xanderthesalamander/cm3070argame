@@ -116,6 +116,7 @@ public class PrinterManager : MonoBehaviour
         currentIndex = 0;
         currentPreview = Instantiate(objectPreviewPrefabs[currentIndex]);
         updateCategoryDetails();
+        updateItemDetails();
     }
 
     public void ChangeCategoryPrevious()
@@ -127,6 +128,7 @@ public class PrinterManager : MonoBehaviour
         currentIndex = 0;
         currentPreview = Instantiate(objectPreviewPrefabs[currentIndex]);
         updateCategoryDetails();
+        updateItemDetails();
     }
 
     public void PrintObject()
