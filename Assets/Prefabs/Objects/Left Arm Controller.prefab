@@ -1788,10 +1788,8 @@ PrefabInstance:
         create weapons and defenses
 
 
-
-
-        You can toggle this screen on and
-        off by pressing the "toggle screen" button on your arm'
+        You can turn this screen on and off
+        by pressing the "Screen ON&OFF" button on your arm'
       objectReference: {fileID: 0}
     - target: {fileID: 2624046392915173501, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_text
