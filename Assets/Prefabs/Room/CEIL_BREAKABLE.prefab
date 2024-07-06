@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 6883486925206373350}
   - component: {fileID: 8336980583825207999}
   - component: {fileID: 1273703465594129581}
-  - component: {fileID: 6294144954820541478}
-  - component: {fileID: 1698045843024858846}
+  - component: {fileID: 6575176649757075200}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Wall
@@ -107,34 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6294144954820541478
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914650535939743347}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1698045843024858846
+--- !u!114 &6575176649757075200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,40 +115,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1914650535939743347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91fc9178a0b0c3d4bb8b6d91b16d9893, type: 3}
+  m_Script: {fileID: 11500000, guid: fc780b0c3bf5e4b29ae7c3269e6802ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  copyComponents: 0
-  triggerOptions:
-    triggerType: 0
-    minimumCollisionForce: 0
-    filterCollisionsByTag: 1
-    triggerAllowedTags:
-    - Bullet
-    - EnemyBullet
-    triggerKey: 0
-  fractureOptions:
-    fragmentCount: 10
-    xAxis: 1
-    yAxis: 1
-    zAxis: 0
-    detectFloatingFragments: 0
-    asynchronous: 0
-    insideMaterial: {fileID: 2100000, guid: 8cf6bbeb0f96d4418897f82e1561c211, type: 2}
-    textureScale: {x: 1, y: 1}
-    textureOffset: {x: 0, y: 0}
-  refractureOptions:
-    enableRefracturing: 0
-    maxRefractureCount: 1
-    invokeCallbacks: 0
-  callbackOptions:
-    onFracture:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-  currentRefractureCount: 0
+  allowDestroy: 1
 --- !u!1 &4870985529851428691
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +131,7 @@ GameObject:
   - component: {fileID: 4201102069868418607}
   - component: {fileID: 6449626323203145383}
   m_Layer: 0
-  m_Name: WALL_BREAKABLE_FRACTURE
+  m_Name: CEIL_BREAKABLE
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,8 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallCube: {fileID: 1914650535939743347}
-  horizontalLayers: 6
-  protectedBottomLayers: 2
-  destroyableMaterial: {fileID: 2100000, guid: f0ae8684bcc8c450ca698b4408f84041, type: 2}
-  protectedMaterial: {fileID: 2100000, guid: 440f5849475624e2a9ae35c7f3c4b810, type: 2}
+  horizontalLayers: 1
+  protectedBottomLayers: 0
+  destroyableMaterial: {fileID: 0}
+  protectedMaterial: {fileID: 0}
   testing: 0

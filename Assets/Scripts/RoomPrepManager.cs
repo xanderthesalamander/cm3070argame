@@ -124,6 +124,7 @@ public class RoomPrepManager : MonoBehaviour
                 
                 if (globalMeshReplaced == false && roomUpdated == true)
                 {
+                    // Place cells and filter them
                     roomMeshes = new List<GameObject>();
                     RoomCellsCreate();
                     RoomCellsFilter();
@@ -170,6 +171,9 @@ public class RoomPrepManager : MonoBehaviour
         Vector3 startPos = new Vector3(xmin, ymin, zmin) - new Vector3(vol_width/2, 0, vol_length/2) + new Vector3(cell_width / 2, cell_height / 2, cell_length / 2);;
         // This is to resize the cell prefab
         Vector3 prefabSize = cellPrefab.GetComponent<Renderer>().bounds.size;
+        // For overlap box
+        Quaternion orientation = Quaternion.identity;
+        Vector3 halfExtents = new Vector3((cellSize / 2) - 0.01f, (cellSize / 2) - 0.01f, (cellSize / 2) - 0.01f);
         for (int i = 0; i < nx; i++)
         {
             for (int j = 0; j < ny; j++)
@@ -177,12 +181,13 @@ public class RoomPrepManager : MonoBehaviour
                 for (int k = 0; k < nz; k++)
                 {
                     Vector3 cellPosition = startPos + new Vector3(i * cell_width, j * cell_height, k * cell_length);
-                    Collider[] hitColliders = Physics.OverlapSphere(cellPosition, (cellSize / 2) - 0.01f);
+                    // Collider[] hitColliders = Physics.OverlapSphere(cellPosition, (cellSize / 2) - 0.01f);
+                    Collider[] hitColliders = Physics.OverlapBox(cellPosition, halfExtents, orientation);
                     foreach (Collider other in hitColliders)
                     {
                         if (other.gameObject.tag == "RoomGlobalMesh")
                         {
-                            GameObject cell = Instantiate(cellPrefab, cellPosition, Quaternion.identity);
+                            GameObject cell = Instantiate(cellPrefab, cellPosition, orientation);
                             cells.Add(cell);
                             break;
                         }
@@ -194,35 +199,48 @@ public class RoomPrepManager : MonoBehaviour
         Debug.LogError("RoomPrepManager - " + cells.Count.ToString() + " cells created");
     }
 
-    private void RoomCellsFilter()
+    public void RoomCellsFilter()
     {
         int cellDestroyed = 0;
         // Only keep the cells intersecting with the room mesh
         string[] TagList = {"Wall", "Ceiling"};
+        // For overlap box
+        Quaternion orientation = Quaternion.identity;
+        Vector3 halfExtents = new Vector3((cellSize / 2) - 0.01f, (cellSize / 2) - 0.01f, (cellSize / 2) - 0.01f);
         foreach (GameObject cell in cells)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(cell.transform.position, (cellSize / 2) - 0.01f);
-            bool breakTag = false;
-            foreach (Collider other in hitColliders)
+            if (cell != null)
             {
-                foreach (string tag in TagList)
+                // Collider[] hitColliders = Physics.OverlapSphere(cell.transform.position, (cellSize / 2) - 0.01f);
+                Collider[] hitColliders = Physics.OverlapBox(cell.transform.position, halfExtents, orientation);
+                bool breakTag = false;
+                foreach (Collider other in hitColliders)
                 {
-                    if (other.gameObject.tag == tag)
+                    foreach (string tag in TagList)
                     {
-                        Destroy(cell);
-                        breakTag = true;
-                        cellDestroyed++;
+                        if (other.gameObject.tag == tag)
+                        {
+                            Destroy(cell);
+                            breakTag = true;
+                            cellDestroyed++;
+                            break;
+                        }
+                    }
+                    if (breakTag)
+                    {
                         break;
                     }
-                }
-                if (breakTag)
-                {
-                    break;
                 }
             }
         }
         Debug.Log("RoomPrepManager - " + cellDestroyed.ToString() + " cells removed");
         Debug.LogError("RoomPrepManager - " + cellDestroyed.ToString() + " cells removed");
+    }
+
+    public void CellAggregate()
+    {
+        // Use CSG operation to aggregate cells?
+        return;
     }
 
     private void RemoveGlobalMesh()

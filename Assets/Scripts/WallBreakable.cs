@@ -10,7 +10,8 @@ public class WallBreakable : MonoBehaviour
     [Tooltip("The number of horizon")]
     [SerializeField] int protectedBottomLayers = 2;
     [Tooltip("The number of layers at the bottom that cannot be destroyed")]
-    [SerializeField] Material[] materials;
+    [SerializeField] Material destroyableMaterial;
+    [SerializeField] Material protectedMaterial;
     [SerializeField] bool testing = false;
 
     void Start()
@@ -26,15 +27,17 @@ public class WallBreakable : MonoBehaviour
         BreakY(WallCube, horizontalLayers);
     }
 
+    private void BreakXZ(GameObject originalCube, int numSections)
+    {
+        
+    }
+    
     private void BreakY(GameObject originalCube, int numSections)
     {
         // Original position, size and scale
         Vector3 originalPosition = originalCube.transform.position;
         Vector3 originalSize = originalCube.GetComponent<Renderer>().bounds.size;
         Vector3 originalScale = originalCube.transform.localScale;
-        // Debug.Log("X: scale " + originalScale.x.ToString() + ", size " + originalSize.x.ToString());
-        // Debug.Log("Y: scale " + originalScale.y.ToString() + ", size " + originalSize.y.ToString());
-        // Debug.Log("Z: scale " + originalScale.z.ToString() + ", size " + originalSize.z.ToString());
         // Section size
         float sectionSize = originalSize.y / numSections;
         // Bottom position
@@ -50,21 +53,14 @@ public class WallBreakable : MonoBehaviour
             GameObject partCube = Instantiate(originalCube, partPosition, Quaternion.identity);
             partCube.transform.rotation = originalCube.transform.rotation;
             partCube.transform.localScale = partSize;
-            // Adjust collider size (not needed since it needs to stay 1, 1, 1 - this is relative to the parent)
-            // BoxCollider partCubeBC = partCube.GetComponent<BoxCollider>();
-            // if (partCubeBC != null)
-            // {
-            //     partCubeBC.center = partPosition;
-            //     partCubeBC.size = partSize;
-            // }
             // Assign random material from list
-            partCube.GetComponent<MeshRenderer>().material = materials[0];
+            partCube.GetComponent<MeshRenderer>().material = destroyableMaterial;
             // Set parent to original parent
             partCube.transform.SetParent(originalCube.transform.parent);
             // Remove breaking on impact for bottom layers
             if (i < protectedBottomLayers)
             {
-                partCube.GetComponent<MeshRenderer>().material = materials[1];
+                partCube.GetComponent<MeshRenderer>().material = protectedMaterial;
                 DestroyOnBulletImpact partCubeDOBI = partCube.GetComponent<DestroyOnBulletImpact>();
                 if (partCubeDOBI != null)
                 {
@@ -79,10 +75,5 @@ public class WallBreakable : MonoBehaviour
         }
         // Destroy the original cube
         Destroy(originalCube);
-    }
-
-    private void BreakX(GameObject originalCube, int numSections)
-    {
-        
     }
 }
