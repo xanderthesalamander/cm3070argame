@@ -1389,6 +1389,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Wave Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 7326748197559973930, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326748197559973930, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_Name
       value: Debug Screen WM
@@ -1472,7 +1480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   debugScreenText: {fileID: 4191300654718216171}
-  isPrinterPlaced: 0
 --- !u!1 &1807952471
 GameObject:
   m_ObjectHideFlags: 0
