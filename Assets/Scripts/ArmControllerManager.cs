@@ -30,7 +30,9 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private GameObject tutorialPressButton;
     [SerializeField] private GameObject tutorialPlacePrinter;
     // Debugging output
-    [Header("Debug Output")]
+    [Header("Screens Text Output")]
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
+    [SerializeField] private TextMeshProUGUI victoryScoreText;
     [SerializeField] private TextMeshProUGUI debugScreenText;
     
     void Awake()
@@ -98,6 +100,7 @@ public class ArmControllerManager : MonoBehaviour
         if (state == GameState.VictoryState)
         {
             // Victory
+            UpdateScoreTexts();
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
             updateCurrentScreen(victoryScreen);
@@ -105,7 +108,8 @@ public class ArmControllerManager : MonoBehaviour
         }
         if (state == GameState.LoseState)
         {
-            // Victory
+            // Game Over
+            UpdateScoreTexts();
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
             updateCurrentScreen(gameOverScreen);
@@ -231,6 +235,19 @@ public class ArmControllerManager : MonoBehaviour
         // Activate or deactivate the tutorials
         Debug.Log("ArmControllerManager - Toggle tutorial");
         tutorials?.SetActive(!tutorials.activeSelf);
+    }
+
+    private void UpdateScoreTexts()
+    {
+        int score = GameManager.instance.getScore();
+        if (gameOverScoreText != null)
+        {
+            gameOverScoreText.text = score.ToString();
+        }
+        if (victoryScoreText != null)
+        {
+            victoryScoreText.text = score.ToString();
+        }
     }
 
     private void Troubleshooting()

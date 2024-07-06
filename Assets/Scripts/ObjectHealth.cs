@@ -29,6 +29,8 @@ public class ObjectHealth : MonoBehaviour
             PlayDeadSound();
             // Add resource
             resourceManager.AddResource(resourceValue);
+            // Icrease score
+            GameManager.instance.IncreaseScore(resourceValue);
             // Destroy the GameObject
             Destroy(gameObject);
         }

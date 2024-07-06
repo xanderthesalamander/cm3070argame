@@ -12,9 +12,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
     [SerializeField] private TextMeshProUGUI debugScreenText;
     [Tooltip("Debugging output")]
-    
-    // These should be made private after testing
-    public bool isPrinterPlaced = false;
+    private int score = 0;
     
     void Awake()
     {
@@ -73,9 +71,24 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.EnemyWaveState);
     }
 
+    public void IncreaseScore(int value)
+    {
+        score += value;
+    }
+
+    public void ReduceScore(int value)
+    {
+        score -= value;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
     private void ResetGame()
     {
-
+        score = 0;
     }
 
     private void DebugManager()
