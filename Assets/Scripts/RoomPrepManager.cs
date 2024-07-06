@@ -6,8 +6,15 @@ using Parabox.CSG;
 
 public class RoomPrepManager : MonoBehaviour
 {
-    [SerializeField] GameObject roomMeshPrefab;
-    [Tooltip("The prefab to be used to generate the room prefab")]
+    // Current issues:
+    // 1. No floor
+    // 2. Bullets go through the cells
+    // 3. Objects outside of room are invisible
+    // 4. Cells have a hole in the middle of walls
+    // 5. No roof
+    
+    // [SerializeField] GameObject roomMeshPrefab;
+    // [Tooltip("The prefab to be used to generate the room prefab")]
     [SerializeField] GameObject wallPrefab;
     [Tooltip("The prefab to be used to generate walls")]
     [SerializeField] GameObject cellPrefab;
@@ -17,7 +24,7 @@ public class RoomPrepManager : MonoBehaviour
     // ==== TEST
     // [SerializeField] GameObject go1;
     // [SerializeField] GameObject go2;
-    [SerializeField] Material highlightMaterial;
+    // [SerializeField] Material highlightMaterial;
     // ==== TEST END
     
     private OVRSceneManager OVRsceneManager;
@@ -115,7 +122,7 @@ public class RoomPrepManager : MonoBehaviour
                     roomUpdated = true;
                 }
                 
-                if (globalMeshReplaced == false)
+                if (globalMeshReplaced == false && roomUpdated == true)
                 {
                     roomMeshes = new List<GameObject>();
                     RoomCellsCreate();
@@ -136,6 +143,11 @@ public class RoomPrepManager : MonoBehaviour
     private void RoomCellsCreate()
     {
         // Create cells all around the room
+        // TODO: Not ideal
+        cellSize = cellPrefab.transform.lossyScale.x;
+        float cell_width = cellSize;
+        float cell_height = cellSize;
+        float cell_length = cellSize;
         // Use floor and ceiling to get dimension
         float xmin = floor.transform.position.x - floor.transform.lossyScale.x / 2;
         float xmax = floor.transform.position.x + floor.transform.lossyScale.x / 2;
@@ -148,11 +160,6 @@ public class RoomPrepManager : MonoBehaviour
         float vol_length = zmax - zmin;
         vol_width = vol_height * 4;
         vol_length = vol_height * 4;
-        // TODO: Not ideal
-        cellSize = cellPrefab.transform.lossyScale.x;
-        float cell_width = cellSize;
-        float cell_height = cellSize;
-        float cell_length = cellSize;
         //
         float xitems = vol_width / cellSize;
         float yitems = vol_height / cellSize;

@@ -50,6 +50,13 @@ public class WallBreakable : MonoBehaviour
             GameObject partCube = Instantiate(originalCube, partPosition, Quaternion.identity);
             partCube.transform.rotation = originalCube.transform.rotation;
             partCube.transform.localScale = partSize;
+            // Adjust collider size (not needed since it needs to stay 1, 1, 1 - this is relative to the parent)
+            // BoxCollider partCubeBC = partCube.GetComponent<BoxCollider>();
+            // if (partCubeBC != null)
+            // {
+            //     partCubeBC.center = partPosition;
+            //     partCubeBC.size = partSize;
+            // }
             // Assign random material from list
             partCube.GetComponent<MeshRenderer>().material = materials[0];
             // Set parent to original parent
@@ -57,8 +64,17 @@ public class WallBreakable : MonoBehaviour
             // Remove breaking on impact for bottom layers
             if (i < protectedBottomLayers)
             {
-                partCube.GetComponent<DestroyOnBulletImpact>().allowDestroy = false;
                 partCube.GetComponent<MeshRenderer>().material = materials[1];
+                DestroyOnBulletImpact partCubeDOBI = partCube.GetComponent<DestroyOnBulletImpact>();
+                if (partCubeDOBI != null)
+                {
+                    partCubeDOBI.allowDestroy = false;
+                }
+                Fracture partCubeFracture = partCube.GetComponent<Fracture>();
+                if (partCubeFracture != null)
+                {
+                    Destroy(partCubeFracture);
+                }
             }
         }
         // Destroy the original cube
