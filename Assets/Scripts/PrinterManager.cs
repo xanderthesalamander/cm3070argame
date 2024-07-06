@@ -39,6 +39,12 @@ public class PrinterManager : MonoBehaviour
     [Tooltip("A list of prefabs of the turret to be placed")]
     [SerializeField] GameObject[] turretPreviewPrefabs;
     [Tooltip("A list of prefabs of the preview turret (this is shown before placement)")]
+
+    [Header("Shields")]
+    [SerializeField] GameObject[] shieldPrefabs;
+    [Tooltip("A list of prefabs of the shield to be placed")]
+    [SerializeField] GameObject[] shieldPreviewPrefabs;
+    [Tooltip("A list of prefabs of the preview shield (this is shown before placement)")]
     private GameObject[] objectPrefabs;
     private GameObject[] objectPreviewPrefabs;
     private int currentIndex = 0;
@@ -78,9 +84,15 @@ public class PrinterManager : MonoBehaviour
                 "PrinterManager - Length of turretPrefabs and turretPreviewPrefabs are not the same." +
                 "\nPlease ensure each object has a preview and vice-versa.");
         }
+        if (shieldPrefabs.Length != shieldPreviewPrefabs.Length)
+        {
+            Debug.LogError(
+                "PrinterManager - Length of shieldPrefabs and turretPreviewPrefabs are not the same." +
+                "\nPlease ensure each object has a preview and vice-versa.");
+        }
         // Initialise the categories (array of arrays of game objects)
-        categoriesPrefabs = new GameObject[][]{gunPrefabs, turretPrefabs};
-        categoriesPrefabsPreviews = new GameObject[][]{gunPreviewPrefabs, turretPreviewPrefabs};
+        categoriesPrefabs = new GameObject[][]{gunPrefabs, turretPrefabs, shieldPrefabs};
+        categoriesPrefabsPreviews = new GameObject[][]{gunPreviewPrefabs, turretPreviewPrefabs, shieldPreviewPrefabs};
         // Start with first category
         objectPrefabs = categoriesPrefabs[currentCatIndex];
         objectPreviewPrefabs = categoriesPrefabsPreviews[currentCatIndex];

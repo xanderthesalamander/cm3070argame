@@ -1739,7 +1739,7 @@ MonoBehaviour:
   - {fileID: 363656119}
   enemiesWave1: 10
   incrementalEnemies: 5
-  maxWaveLevel: 3
+  maxWaveLevel: 5
   debugScreenText: {fileID: 1695631876}
 --- !u!1 &1883652137
 GameObject:

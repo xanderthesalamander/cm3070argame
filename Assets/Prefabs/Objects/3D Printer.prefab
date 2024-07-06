@@ -1659,9 +1659,14 @@ MonoBehaviour:
   catNames:
   - GUNS
   - TURRETS
+  - SHIELDS
   catDescriptions:
   - Guns can be used to shoot at stuff... like enemies!
   - Turrets can help you defend the space by automatically shooting at enemies
+  - 'Shields can be used to protect yourself from enemy attack
+
+    Make sure the
+    shield is between you and the enemy though...'
   gunPrefabs:
   - {fileID: 8787136631746088596, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
   - {fileID: 8787136631746088596, guid: 9b6e2296e43e441329ce894d0d23de9d, type: 3}
@@ -1676,6 +1681,12 @@ MonoBehaviour:
   turretPreviewPrefabs:
   - {fileID: 2286504920490331935, guid: ae3b1a42392a6481e98584a54e4b3ca8, type: 3}
   - {fileID: 2286504920490331935, guid: 95a46b93fc89e41d6b0fdc61a95e834f, type: 3}
+  shieldPrefabs:
+  - {fileID: 8787136631746088596, guid: b11afb317e95d416d8f7e0a60a60ab67, type: 3}
+  - {fileID: 8787136631746088596, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
+  shieldPreviewPrefabs:
+  - {fileID: 2346351533399605503, guid: 5753eca7b8d764d058bc065469a8e954, type: 3}
+  - {fileID: 4394623965404028920, guid: 88a3d281ee2dc4fef946018cd566d679, type: 3}
 --- !u!1 &8839127345649552577
 GameObject:
   m_ObjectHideFlags: 0
