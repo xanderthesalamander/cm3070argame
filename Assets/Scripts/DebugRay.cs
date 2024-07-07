@@ -57,10 +57,11 @@ public class DebugRay : MonoBehaviour
                 previousHit = currentHit;
             }
 
-            OVRSemanticClassification anchor = hit.collider.gameObject.GetComponentInParent<OVRSemanticClassification>();
-            if (anchor != null)
+            // OVRSemanticClassification anchor = hit.collider.gameObject.GetComponentInParent<OVRSemanticClassification>();
+            string hitName = hit.collider.gameObject.transform.name;
+            if (hitName != null)
             {
-                Debug.Log("DebugRay - Labels: " + string.Join(", ", anchor.Labels));
+                Debug.Log("DebugRay - Labels: " + hitName);
             }
             else
             {

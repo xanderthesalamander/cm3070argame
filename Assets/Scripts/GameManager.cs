@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
     [SerializeField] private TextMeshProUGUI debugScreenText;
     [Tooltip("Debugging output")]
+    [SerializeField] RoomPrepM roomPrepManager;
+    [Tooltip("Room prep manager script")]
+    
+    private bool up1 = false;
+
     private int score = 0;
     
     void Awake()
@@ -25,6 +30,18 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.SetupState);
     }
 
+    void Update()
+    {
+        if (up1 == false)
+        {
+            if (state != GameState.SetupState)
+            {
+                UpdateGameState(state);
+                up1 = true;
+            }
+        }
+    }
+
     public void UpdateGameState(GameState newState)
     {
         state = newState;
@@ -32,6 +49,10 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.SetupState:
+                break;
+            case GameState.RoomPrepState:
+                Debug.Log("GameManager - Room Preparation");
+                roomPrepManager.PrepareRoom();
                 break;
             case GameState.TutorialState:
                 break;
@@ -57,6 +78,12 @@ public class GameManager : MonoBehaviour
     {
         // Make this function available in the unity interface
         UpdateGameState(GameState.GameStart);
+    }
+
+    public void startRoomPrep()
+    {
+        // Make this function available in the unity interface
+        UpdateGameState(GameState.RoomPrepState);
     }
 
     public void startPlayerPlanningState()
@@ -105,6 +132,7 @@ public class GameManager : MonoBehaviour
 
 public enum GameState {
     SetupState,
+    RoomPrepState,
     TutorialState,
     GameStart,
     PlayerPlanningState,
