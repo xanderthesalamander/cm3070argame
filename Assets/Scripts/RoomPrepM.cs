@@ -14,6 +14,8 @@ public class RoomPrepM : MonoBehaviour
     {
         Debug.Log("RoomPrepManager - Preparing room...");
         MRUK mruk = FindObjectOfType<MRUK>();
+        // TODO: Not sure if this is enough (possibly loop through GetRooms())
+        // https://developer.oculus.com/documentation/unity/unity-mr-utility-kit-features/
         mrukComponent = mruk.GetCurrentRoom();
         mrukRoom = mrukComponent.gameObject;
         FixRoomChildren();

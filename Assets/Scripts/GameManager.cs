@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] RoomPrepM roomPrepManager;
     [Tooltip("Room prep manager script")]
     
+    // TODO: Remove
+    // Only for testing in Unity
     private bool up1 = false;
+    // _____
 
     private int score = 0;
     
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.SetupState);
     }
 
+    // TODO: Remove
+    // Only for testing in Unity
     void Update()
     {
         if (up1 == false)
@@ -41,6 +46,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    // _____
 
     public void UpdateGameState(GameState newState)
     {
