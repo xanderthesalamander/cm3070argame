@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
     [SerializeField] private TextMeshProUGUI debugScreenText;
     [Tooltip("Debugging output")]
-    [SerializeField] RoomPrepM roomPrepManager;
+    [SerializeField] RoomPrepManager roomPrepManager;
     [Tooltip("Room prep manager script")]
     
     // TODO: Remove
