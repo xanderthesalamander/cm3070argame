@@ -40,7 +40,6 @@ public class RoomPrepManager : MonoBehaviour
             Debug.Log("RoomPrepManager - Working on " + child.name);
             string[] objNames = {
                 "WALL_FACE",
-                // "INVISIBLE_WALL_FACE",
                 "CEILING",
                 "FLOOR",
                 "GLOBAL_MESH"
@@ -108,6 +107,9 @@ public class RoomPrepManager : MonoBehaviour
             GameObject globalMeshObj = globalMeshParent.gameObject.transform.GetChild(0).gameObject;
             Mesh mesh = globalMeshObj.GetComponent<MeshFilter>().sharedMesh;
             Mesh newMesh = RemoveCollidingTrinagles(mesh);
+            globalMeshObj.GetComponent<MeshFilter>().sharedMesh = newMesh;
+            globalMeshObj.GetComponent<MeshCollider>().sharedMesh = newMesh;
+            Debug.LogError("RoomPrepManager - FixGlobalMesh - GLOBAL MESH updated");
         }
         else
         {
@@ -119,12 +121,36 @@ public class RoomPrepManager : MonoBehaviour
     {
         Vector3[] vertices = mesh.vertices;
         int[] triangles = mesh.triangles;
+        List<int> newTriangles = new List<int>();
         // Looping trough each triangle
-        foreach (int t in triangles)
+        int i = 0;
+        while (i < triangles.Length)
         {
-            
+            bool keep = false;
+            // Get triangle points
+            Vector3 p1 = vertices[triangles[i]];
+            Vector3 p2 = vertices[triangles[i+1]];
+            Vector3 p3 = vertices[triangles[i+2]];
+            // Get triangle center
+            Vector3 c = (p1 + p2 + p3) / 3;
+            // Calculate
+            Collider[] hitColliders = Physics.OverlapSphere(c, vertexRadius);
+            foreach (Collider other in hitColliders)
+            {
+                if (other.gameObject.tag == "Wall")
+                {
+                    keep = false;
+                    break;
+                }
+            }
+            if (keep)
+            {
+                newTriangles.AddRange(new int[] {i, i+1, i+2});
+            }
+            // Next triangle
+            i = i + 3;
         }
-
+        mesh.triangles = newTriangles.ToArray();
         return mesh;
     }
 
