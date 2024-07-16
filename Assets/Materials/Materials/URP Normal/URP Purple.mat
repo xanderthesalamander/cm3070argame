@@ -12,29 +12,25 @@ Material:
   m_Parent: {fileID: 2100000, guid: 73a4fff9eb2e44e3e8d2a59fcb0fff4a, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
   - _SPECULAR_SETUP
-  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2000
   stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
-  - SHADOWCASTER
+    RenderType: Opaque
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _DstBlend: 10
-    - _DstBlendAlpha: 10
-    - _Surface: 1
-    - _ZWrite: 0
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
+    - _Surface: 0
+    - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.75275373, g: 0, b: 0.9137255, a: 1}
     - _Color: {r: 0.75275373, g: 0, b: 0.9137255, a: 1}

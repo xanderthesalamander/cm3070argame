@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 947471196}
   - component: {fileID: 947471195}
   m_Layer: 8
-  m_Name: Wall (1)
+  m_Name: Room Passthrough Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1442,7 +1442,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.759, y: 0.766, z: -1.4139466}
-  m_LocalScale: {x: 0.30173, y: 0.30173, z: 0.30173}
+  m_LocalScale: {x: 1.1098233, y: 1.1098233, z: 0.09468132}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
