@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     
     // TODO: Remove
     // Only for testing in Unity
-    private bool up1 = false;
+    public bool updateRoom = false;
     // _____
 
     private int score = 0;
@@ -37,13 +37,11 @@ public class GameManager : MonoBehaviour
     // Only for testing in Unity
     void Update()
     {
-        if (up1 == false)
+        if (updateRoom)
         {
-            if (state != GameState.SetupState)
-            {
-                UpdateGameState(state);
-                up1 = true;
-            }
+            Debug.Log("GameManager - Room Preparation");
+            roomPrepManager.PrepareRoom();
+            updateRoom = false;
         }
     }
     // _____
@@ -57,8 +55,6 @@ public class GameManager : MonoBehaviour
             case GameState.SetupState:
                 break;
             case GameState.RoomPrepState:
-                Debug.Log("GameManager - Room Preparation");
-                roomPrepManager.PrepareRoom();
                 break;
             case GameState.TutorialState:
                 break;
