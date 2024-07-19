@@ -9,13 +9,19 @@ public class RoomPrepManager : MonoBehaviour
 {
     [SerializeField] private GameObject wallBreakablePrefab;
     [SerializeField] private GameObject wallProtectionLayer;
-    [SerializeField] float vertexRadius = 0.05f;
-    [SerializeField] private GameObject cellPrefab;
-    private List<GameObject> cells = new List<GameObject>();
-    private float cellSize;
+    [SerializeField] float vertexRadius = 0.4f;
+    [SerializeField] private GameObject placeholder;
+    // [SerializeField] private GameObject cellPrefab;
+    // private List<GameObject> cells = new List<GameObject>();
+    // private float cellSize;
     private MRUKRoom mrukRoom;
     private GameObject mrukRoomGO;
 
+    private void Start()
+    {
+        wallProtectionLayer.SetActive(false);
+    }
+    
     public void PrepareRoom()
     {
         Debug.Log("RoomPrepManager - Preparing room...");
@@ -25,7 +31,7 @@ public class RoomPrepManager : MonoBehaviour
         mrukRoom = mruk.GetCurrentRoom();
         mrukRoomGO = mrukRoom.gameObject;
         FixRoomChildren();
-        // FixGlobalMesh();
+        FixGlobalMesh();
         Debug.Log("RoomPrepManager - Room complete");
     }
 
@@ -33,6 +39,7 @@ public class RoomPrepManager : MonoBehaviour
     {
         Debug.Log("RoomPrepManager - Room name: " + mrukRoomGO.name);
         Debug.Log("RoomPrepManager - Room children: " + mrukRoomGO.transform.childCount.ToString());
+        wallProtectionLayer.SetActive(true);
         // List<MRUKAnchor> wallAnchores = mrukRoom.GetWallAnchors();
         // Debug.Log("RoomPrepManager - Walls: " + wallAnchores.Count.ToString());
         foreach (Transform child in mrukRoomGO.transform)
@@ -42,7 +49,7 @@ public class RoomPrepManager : MonoBehaviour
                 "WALL_FACE",
                 "CEILING",
                 "FLOOR",
-                "GLOBAL_MESH"
+                // "GLOBAL_MESH"
             };
             foreach (string objName in objNames)
             {
@@ -53,6 +60,7 @@ public class RoomPrepManager : MonoBehaviour
                 }
             }
         }
+        wallProtectionLayer.SetActive(false);
     }
 
     private void StealDefaultMeshAndDestroyOriginal(Transform objTransform, string objName)
@@ -97,16 +105,14 @@ public class RoomPrepManager : MonoBehaviour
 
     private void FixGlobalMesh()
     {
-        Debug.Log("RoomPrepManager - FixGlobalMesh 1");
-
-        // MRUKAnchor globalMeshParent = mrukRoom.GetGlobalMeshAnchor();
-        MRUKAnchor globalMeshParent = mrukRoom.GetFloorAnchor();
+        MRUKAnchor globalMeshParent = mrukRoom.GetGlobalMeshAnchor();
+        // MRUKAnchor globalMeshParent = mrukRoom.GetFloorAnchor();
         
         if (globalMeshParent != null)
         {
             GameObject globalMeshObj = globalMeshParent.gameObject.transform.GetChild(0).gameObject;
             Mesh mesh = globalMeshObj.GetComponent<MeshFilter>().sharedMesh;
-            Mesh newMesh = RemoveCollidingTrinagles(mesh);
+            Mesh newMesh = RemoveCollidingTrinagles(mesh, globalMeshObj);
             globalMeshObj.GetComponent<MeshFilter>().sharedMesh = newMesh;
             globalMeshObj.GetComponent<MeshCollider>().sharedMesh = newMesh;
             Debug.LogError("RoomPrepManager - FixGlobalMesh - GLOBAL MESH updated");
@@ -117,27 +123,30 @@ public class RoomPrepManager : MonoBehaviour
         }
     }
 
-    private Mesh RemoveCollidingTrinagles(Mesh mesh)
+    private Mesh RemoveCollidingTrinagles(Mesh mesh, GameObject go)
     {
         Vector3[] vertices = mesh.vertices;
         int[] triangles = mesh.triangles;
+        Debug.LogError("RoomPrepManager - RemoveCollidingTrinagles - Initial triangles: " + triangles.Length.ToString());
         List<int> newTriangles = new List<int>();
         // Looping trough each triangle
         int i = 0;
         while (i < triangles.Length)
         {
-            bool keep = false;
-            // Get triangle points
-            Vector3 p1 = vertices[triangles[i]];
-            Vector3 p2 = vertices[triangles[i+1]];
-            Vector3 p3 = vertices[triangles[i+2]];
+            bool keep = true;
+            // Get triangle points (world position)
+            Vector3 p1 = go.transform.TransformPoint(vertices[triangles[i]]);
+            Vector3 p2 = go.transform.TransformPoint(vertices[triangles[i+1]]);
+            Vector3 p3 = go.transform.TransformPoint(vertices[triangles[i+2]]);
             // Get triangle center
             Vector3 c = (p1 + p2 + p3) / 3;
             // Calculate
             Collider[] hitColliders = Physics.OverlapSphere(c, vertexRadius);
+            // GameObject ph = Instantiate(placeholder);
+            // ph.transform.position = c;
             foreach (Collider other in hitColliders)
             {
-                if (other.gameObject.tag == "Wall")
+                if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Ceiling")
                 {
                     keep = false;
                     break;
@@ -145,12 +154,16 @@ public class RoomPrepManager : MonoBehaviour
             }
             if (keep)
             {
-                newTriangles.AddRange(new int[] {i, i+1, i+2});
+                newTriangles.AddRange(new int[] {triangles[i], triangles[i+1], triangles[i+2]});
             }
             // Next triangle
             i = i + 3;
         }
+        Debug.LogError("RoomPrepManager - RemoveCollidingTrinagles - Final triangles: " + newTriangles.Count.ToString());
+        mesh.vertices = vertices;
         mesh.triangles = newTriangles.ToArray();
+        mesh.RecalculateBounds();
+        Debug.LogError("RoomPrepManager - RemoveCollidingTrinagles - Completed");
         return mesh;
     }
 
