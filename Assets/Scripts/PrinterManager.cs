@@ -156,6 +156,7 @@ public class PrinterManager : MonoBehaviour
 
     public void PrintObject()
     {
+        checkEnoughResources();
         if (enoughResources)
         {
             // Pay resources
@@ -191,7 +192,6 @@ public class PrinterManager : MonoBehaviour
         {
             costScreenText.text = currentItemCost.ToString();
         }
-        enoughResources = currentItemCost <= resourceManager.GetCurrentResources();
     }
 
     private void updateCategoryDetails()
@@ -205,5 +205,10 @@ public class PrinterManager : MonoBehaviour
         {
             catDescriptionScreenText.text = catDescriptions[currentCatIndex];
         }
+    }
+
+    private void checkEnoughResources()
+    {
+        enoughResources = currentItemCost <= resourceManager.GetCurrentResources();
     }
 }
