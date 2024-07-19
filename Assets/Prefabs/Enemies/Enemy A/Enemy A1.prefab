@@ -478,6 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df83f1e3804f48ed95e8072a4f661fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1
+  minShootingDistance: 8
 --- !u!114 &3760257485407765251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a51db5457794b778e59da4e9707403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
 --- !u!114 &3436490733578955154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +544,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guns:
   - {fileID: 7441541532009550885}
-  minShootingDistance: 8
 --- !u!82 &3802094732472637207
 AudioSource:
   m_ObjectHideFlags: 0

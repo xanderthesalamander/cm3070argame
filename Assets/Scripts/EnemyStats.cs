@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    // Stats
-    public float moveSpeed = 1.0f;
+    [SerializeField] public float moveSpeed = 1.0f;
+    // [Tooltip("Enemy movement speed")]
+    [SerializeField] public float minShootingDistance = 5.0f;
+    // [Tooltip("Minimum distance from player for the enemy to start shooting")]
+
 }

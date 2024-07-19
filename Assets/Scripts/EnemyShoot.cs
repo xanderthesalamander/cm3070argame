@@ -6,12 +6,17 @@ public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] List<GameObject> guns;
     [Tooltip("A list of gun game objects")]
-    public float minShootingDistance = 8.0f;
-    [Tooltip("Minimum distance from player for the shooting to start")]
+    private EnemyStats enemyStats;
+    private float minShootingDistance = 1.0f;
 
     // Start shooting coroutine for each gun in the list
     void Start()
     {
+        enemyStats = GetComponent<EnemyStats>();
+        if (enemyStats != null)
+        {
+            minShootingDistance = enemyStats.minShootingDistance;
+        }
         // Start shooting coroutine for each gun in the list
         foreach (GameObject gunObject in guns)
         {
