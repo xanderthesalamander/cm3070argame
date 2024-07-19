@@ -4,29 +4,39 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float forceMax = 1.0f;
-    [SerializeField] float probabilityThreshold = 0.99f;
-    [SerializeField] Rigidbody rb;
+    private EnemyStats enemyStats;
+    private float moveSpeed = 1.0f;
+    private Transform target;
+    private UnityEngine.AI.NavMeshAgent navMeshAgent;
     
     void Start()
     {
-        if (rb == null)
+        enemyStats = GetComponent<EnemyStats>();
+        if (enemyStats != null)
         {
-            Debug.LogError("EnemyMovement - No rigidbody found");
+            moveSpeed = enemyStats.moveSpeed;
         }
+        // Get enemy navigation mesh agent
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     void Update()
     {
-        if (Random.Range(0.0f, 1.0f) > probabilityThreshold)
+        // Find the player and set it as the target
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
         {
-            // Add random force
-            rb.AddForce(
-                Random.Range(-forceMax, forceMax),
-                Random.Range(-forceMax, forceMax),
-                Random.Range(-forceMax, forceMax),
-                ForceMode.Impulse
-            );
+            target = player.transform;
+        }
+        // Check if the target is not null before proceeding
+        if (target != null)
+        {
+            // Look at target
+            transform.LookAt(target);
+            // Move towards the target
+            navMeshAgent.SetDestination(target.transform.position);
+            // Set speed
+            navMeshAgent.speed = moveSpeed;
         }
     }
 }
