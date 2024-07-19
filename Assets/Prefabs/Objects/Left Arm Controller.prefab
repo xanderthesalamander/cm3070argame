@@ -298,7 +298,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d808411704907473da67fc2db06f9691, type: 2}
+  - {fileID: 2100000, guid: 691a901791ec94e729d1c9dd94a8d8cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -928,10 +928,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1091422042147900118}
     m_Modifications:
+    - target: {fileID: 4706856654257341552, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ef85a7542f6d47558974e338c82f0cd, type: 2}
     - target: {fileID: 4881291468270235186, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
       propertyPath: m_Name
       value: Tutorials
       objectReference: {fileID: 0}
+    - target: {fileID: 7775062609392732591, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ef85a7542f6d47558974e338c82f0cd, type: 2}
     - target: {fileID: 9075702509114791116, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -1880,6 +1888,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6282282686221412711}
     m_Modifications:
+    - target: {fileID: 4706856654257341552, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ef85a7542f6d47558974e338c82f0cd, type: 2}
     - target: {fileID: 4881291468270235186, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
       propertyPath: m_Name
       value: Tutorials (place printer)
@@ -1888,6 +1900,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Press the LEFT trigger to place the printer
       objectReference: {fileID: 0}
+    - target: {fileID: 7775062609392732591, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ef85a7542f6d47558974e338c82f0cd, type: 2}
     - target: {fileID: 9075702509114791116, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7288452
@@ -2799,10 +2815,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6282282686221412711}
     m_Modifications:
+    - target: {fileID: 4706856654257341552, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ef85a7542f6d47558974e338c82f0cd, type: 2}
     - target: {fileID: 4881291468270235186, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
       propertyPath: m_Name
       value: Tutorials (press button)
       objectReference: {fileID: 0}
+    - target: {fileID: 7775062609392732591, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ef85a7542f6d47558974e338c82f0cd, type: 2}
     - target: {fileID: 9075702509114791116, guid: 5b02a410a0a684da485e51b2142d042d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.72884524
