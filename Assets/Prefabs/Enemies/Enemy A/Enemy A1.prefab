@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f720bda5ac64e28b5df0eab9346499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 70
   resourceValue: 10
   deadSound: {fileID: 8300000, guid: d3fc5c9bdd97040eeae85d4c760a5c7c, type: 3}
   slider: {fileID: 1775657327903199076}
