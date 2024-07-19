@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4359bd3314723409dbeb53515cc55901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6965726970724856675, guid: df7db2d017ee642d393b311ab8b38ace, type: 3}
+  bullet: {fileID: 6965726970724856675, guid: 8246f9f8420da4ac196eb462f5f11eba, type: 3}
   bulletSpawnPoint: {fileID: 4239503209992313945}
   debugScreenText: {fileID: 4207857992114319122}
 --- !u!54 &2472972365847605756
