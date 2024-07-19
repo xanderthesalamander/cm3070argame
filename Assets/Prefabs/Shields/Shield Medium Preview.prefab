@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 678277684059341808, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 1180928680565399266, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 4241324271389869783, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 7080359002088610273, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -43,7 +43,7 @@ PrefabInstance:
     - target: {fileID: 8398450352167998207, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 8411705960430795258, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -55,11 +55,11 @@ PrefabInstance:
     - target: {fileID: 8582993300477570387, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 8661181456868971559, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 8787136631746088596, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
       propertyPath: m_Name
       value: Shield Medium Preview
@@ -106,6 +106,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2472972365847605756, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
+    - {fileID: 3033610597643851431, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
+    - {fileID: 8777474187058397291, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
+    - {fileID: 7983867378456453546, guid: 6149d7450de39408ba27e2a9e3185985, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

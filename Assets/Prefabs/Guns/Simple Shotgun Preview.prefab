@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 2508807071774974813, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4908e3b4fd42f47f985b4c702769c185, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 3388318662685513234, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: _rigidbody
       value: 
@@ -39,7 +39,7 @@ PrefabInstance:
     - target: {fileID: 7038002580002773844, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 7080359002088610273, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -47,7 +47,7 @@ PrefabInstance:
     - target: {fileID: 7269082778563250270, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4908e3b4fd42f47f985b4c702769c185, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 8232942552071255899, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 8931204297149263043, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4908e3b4fd42f47f985b4c702769c185, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 9132705454970750201, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

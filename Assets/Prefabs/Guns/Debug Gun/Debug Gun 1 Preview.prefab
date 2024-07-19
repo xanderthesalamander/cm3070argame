@@ -11,15 +11,15 @@ PrefabInstance:
     - target: {fileID: 2508807071774974813, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 7038002580002773844, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 7269082778563250270, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edab9f95b0eb44fd8b7c2a4d22162470, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b0f091de554649ddb4fe9ded9393b50, type: 2}
     - target: {fileID: 8787136631746088596, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
       propertyPath: m_Name
       value: Debug Gun 1 Preview
