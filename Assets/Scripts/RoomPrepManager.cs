@@ -10,10 +10,6 @@ public class RoomPrepManager : MonoBehaviour
     [SerializeField] private GameObject wallBreakablePrefab;
     [SerializeField] private GameObject wallProtectionLayer;
     [SerializeField] float vertexRadius = 0.4f;
-    [SerializeField] private GameObject placeholder;
-    // [SerializeField] private GameObject cellPrefab;
-    // private List<GameObject> cells = new List<GameObject>();
-    // private float cellSize;
     private MRUKRoom mrukRoom;
     private GameObject mrukRoomGO;
 
@@ -40,8 +36,6 @@ public class RoomPrepManager : MonoBehaviour
         Debug.Log("RoomPrepManager - Room name: " + mrukRoomGO.name);
         Debug.Log("RoomPrepManager - Room children: " + mrukRoomGO.transform.childCount.ToString());
         wallProtectionLayer.SetActive(true);
-        // List<MRUKAnchor> wallAnchores = mrukRoom.GetWallAnchors();
-        // Debug.Log("RoomPrepManager - Walls: " + wallAnchores.Count.ToString());
         foreach (Transform child in mrukRoomGO.transform)
         {
             Debug.Log("RoomPrepManager - Working on " + child.name);
@@ -115,7 +109,7 @@ public class RoomPrepManager : MonoBehaviour
             Mesh newMesh = RemoveCollidingTrinagles(mesh, globalMeshObj);
             globalMeshObj.GetComponent<MeshFilter>().sharedMesh = newMesh;
             globalMeshObj.GetComponent<MeshCollider>().sharedMesh = newMesh;
-            Debug.LogError("RoomPrepManager - FixGlobalMesh - GLOBAL MESH updated");
+            Debug.Log("RoomPrepManager - FixGlobalMesh - GLOBAL MESH updated");
         }
         else
         {
@@ -127,7 +121,7 @@ public class RoomPrepManager : MonoBehaviour
     {
         Vector3[] vertices = mesh.vertices;
         int[] triangles = mesh.triangles;
-        Debug.LogError("RoomPrepManager - RemoveCollidingTrinagles - Initial triangles: " + triangles.Length.ToString());
+        Debug.Log("RoomPrepManager - RemoveCollidingTrinagles - Initial triangles: " + triangles.Length.ToString());
         List<int> newTriangles = new List<int>();
         // Looping trough each triangle
         int i = 0;
@@ -140,10 +134,8 @@ public class RoomPrepManager : MonoBehaviour
             Vector3 p3 = go.transform.TransformPoint(vertices[triangles[i+2]]);
             // Get triangle center
             Vector3 c = (p1 + p2 + p3) / 3;
-            // Calculate
+            // Check when the sphere at the center of the triangl hits the wall or ceiling
             Collider[] hitColliders = Physics.OverlapSphere(c, vertexRadius);
-            // GameObject ph = Instantiate(placeholder);
-            // ph.transform.position = c;
             foreach (Collider other in hitColliders)
             {
                 if (other.gameObject.tag == "Wall" || other.gameObject.tag == "Ceiling")
@@ -154,16 +146,17 @@ public class RoomPrepManager : MonoBehaviour
             }
             if (keep)
             {
+                // Add triangle to new mesh
                 newTriangles.AddRange(new int[] {triangles[i], triangles[i+1], triangles[i+2]});
             }
             // Next triangle
             i = i + 3;
         }
-        Debug.LogError("RoomPrepManager - RemoveCollidingTrinagles - Final triangles: " + newTriangles.Count.ToString());
+        Debug.Log("RoomPrepManager - RemoveCollidingTrinagles - Final triangles: " + newTriangles.Count.ToString());
         mesh.vertices = vertices;
         mesh.triangles = newTriangles.ToArray();
         mesh.RecalculateBounds();
-        Debug.LogError("RoomPrepManager - RemoveCollidingTrinagles - Completed");
+        Debug.Log("RoomPrepManager - RemoveCollidingTrinagles - Completed");
         return mesh;
     }
 
