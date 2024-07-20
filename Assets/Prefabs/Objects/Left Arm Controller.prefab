@@ -230,9 +230,9 @@ Transform:
   m_Children:
   - {fileID: 7322366752111906186}
   - {fileID: 5710981298162087491}
+  - {fileID: 2203801835793897581}
   - {fileID: 4026730492928604972}
   - {fileID: 5773738994291555684}
-  - {fileID: 2203801835793897581}
   - {fileID: 2977051304853486604}
   m_Father: {fileID: 7231303097936419977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -408,6 +408,7 @@ MonoBehaviour:
   tutorials: {fileID: 1059117102339697084}
   toggleScreenButton: {fileID: 3873989086044679764}
   tutorialButton: {fileID: 2241687004292421021}
+  fightButton: {fileID: 7212283493666914426}
   tutorialPressButton: {fileID: 3328211124201210724}
   tutorialPlacePrinter: {fileID: 8794524418558096064}
   gameOverScoreText: {fileID: 3157366841686345380}
@@ -1237,7 +1238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2476,9 +2477,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1387324907358246427}
     m_Modifications:
+    - target: {fileID: 49493713809816695, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d157fb2b8c5ed48d48e06271c806c496, type: 2}
     - target: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_Name
-      value: Button (Custom)
+      value: Button (Fight)
       objectReference: {fileID: 0}
     - target: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_IsActive
@@ -2538,11 +2543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621380023908707964, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: m_text
-      value: CUSTOM
+      value: FIGHT!
       objectReference: {fileID: 0}
     - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2558,12 +2563,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: togglePlaceEnemy
+      value: StartWave
       objectReference: {fileID: 0}
     - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: ArmControllerManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+      propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2100000, guid: d157fb2b8c5ed48d48e06271c806c496, type: 2}
     - target: {fileID: 8465577861225447156, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -2576,6 +2585,11 @@ PrefabInstance:
 --- !u!4 &2203801835793897581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5328217076261237841, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
+  m_PrefabInstance: {fileID: 6297399129008106556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7212283493666914426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3707577967301356614, guid: b958a71e2e0364bdf84afa21816c89e3, type: 3}
   m_PrefabInstance: {fileID: 6297399129008106556}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6962913913157388381
@@ -2737,8 +2751,8 @@ PrefabInstance:
         to create weapons and defences.
 
 
-        Once you are ready, press the button
-        below.'
+        Once you are ready, press the FIGHT
+        button on your arm.'
       objectReference: {fileID: 0}
     - target: {fileID: 2624046392915173501, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_text
@@ -2790,10 +2804,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5334392468131393741, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5300672111593669019, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
+    - {fileID: 6075838607128650112, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a339e18a1ead1448aa1bd7389db6a995, type: 3}

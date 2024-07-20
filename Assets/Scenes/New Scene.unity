@@ -7693,34 +7693,6 @@ PrefabInstance:
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1504974061}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PrepareRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: RoomPrepM, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458715888365408968, guid: 3624a897eaae348ef99296109c122a83, type: 3}
-      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3565918673484728404, guid: 3624a897eaae348ef99296109c122a83, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

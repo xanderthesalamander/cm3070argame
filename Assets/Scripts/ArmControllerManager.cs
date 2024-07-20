@@ -25,6 +25,7 @@ public class ArmControllerManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject toggleScreenButton;
     [SerializeField] private GameObject tutorialButton;
+    [SerializeField] private GameObject fightButton;
     // Debugging output
     [Header("Tutorials")]
     [SerializeField] private GameObject tutorialPressButton;
@@ -88,6 +89,7 @@ public class ArmControllerManager : MonoBehaviour
             DeactivateAllButtons();
             toggleScreenButton?.SetActive(true);
             tutorialButton?.SetActive(true);
+            fightButton?.SetActive(true);
             // placePrinterButton?.SetActive(false);
             DeactivateAllTutorials();
         }
@@ -96,6 +98,8 @@ public class ArmControllerManager : MonoBehaviour
             // Enemy wave
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
+            DeactivateAllButtons();
+            tutorialButton?.SetActive(true);
         }
         if (state == GameState.VictoryState)
         {
@@ -103,6 +107,7 @@ public class ArmControllerManager : MonoBehaviour
             UpdateScoreTexts();
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
+            DeactivateAllButtons();
             updateCurrentScreen(victoryScreen);
             currentScreen?.SetActive(true);
         }
@@ -112,6 +117,7 @@ public class ArmControllerManager : MonoBehaviour
             UpdateScoreTexts();
             DeactivateAllScreens();
             DeactivateAllFunctionalities();
+            DeactivateAllButtons();
             updateCurrentScreen(gameOverScreen);
             currentScreen?.SetActive(true);
         }
@@ -192,6 +198,7 @@ public class ArmControllerManager : MonoBehaviour
         
         toggleScreenButton?.SetActive(false);
         tutorialButton?.SetActive(false);
+        fightButton?.SetActive(false);
     }
 
     private void updateCurrentScreen(GameObject screen)
@@ -268,16 +275,19 @@ public class ArmControllerManager : MonoBehaviour
 
     public void StartGame()
     {
+        Debug.Log("ArmControlManager - StartGame");
         GameManager.instance.UpdateGameState(GameState.GameStart);
     }
 
     public void StartPlanning()
     {
+        Debug.Log("ArmControlManager - StartPlanning");
         GameManager.instance.UpdateGameState(GameState.PlayerPlanningState);
     }
 
     public void StartWave()
     {
+        Debug.Log("ArmControlManager - StartWave");
         GameManager.instance.UpdateGameState(GameState.EnemyWaveState);
     }
 }
