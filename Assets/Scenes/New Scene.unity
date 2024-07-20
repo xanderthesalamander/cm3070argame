@@ -7506,6 +7506,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1559858978571365031, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559858978571365031, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559858978571365031, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1889337942722641899, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
       propertyPath: slider
       value: 
@@ -7554,8 +7566,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 1660985708302367577, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2343802383456773361, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7db4d7f07b147a093a0b0338298efa, type: 3}
