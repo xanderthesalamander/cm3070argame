@@ -35,10 +35,10 @@ public class PlaceObject : MonoBehaviour
         // Get what the ray is hitting
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            // Update location when hitting the room
-            // OVRSemanticClassification anchor = hit.collider.gameObject.GetComponentInParent<OVRSemanticClassification>();
-            // if (anchor != null)
-            // {
+            // Update location when hitting the room floor or global mesh
+            string hitObjName = hit.collider.gameObject.name;
+            if (hitObjName.Contains("Floor") || hitObjName.Contains("GLOBAL_MESH"))
+            {
                 // Show the prefab preview so that it matches the hit object's normal vector
                 currentPreview.transform.position = hit.point;
                 currentPreview.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
@@ -52,7 +52,7 @@ public class PlaceObject : MonoBehaviour
                     ));
                     // currentPreview.transform.LookAt(OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch));
                 }
-            // }
+            }
             // Place the actual prefab on button press
             if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
