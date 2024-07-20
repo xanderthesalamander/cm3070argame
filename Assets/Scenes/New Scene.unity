@@ -896,7 +896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3773497088055060156, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5525540284517756108, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3185,7 +3185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3597,11 +3597,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016568958}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 60a1257aa0fe6472fac4d88e8886b0bf, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 85a14f785d58d4a28a84cb7b683a3bf7, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1850556685}
-  m_TargetTexture: {fileID: 8400000, guid: e18b336f8a8d04e4daadd10c9efb211d, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 5062c0d9771a34be9b995e8c1230f2ce, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -3611,15 +3611,17 @@ VideoPlayer:
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -5953,7 +5955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7707,7 +7709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4410789104288434208, guid: 3624a897eaae348ef99296109c122a83, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4571927527921851980, guid: 3624a897eaae348ef99296109c122a83, type: 3}
       propertyPath: m_AnchorMax.x
