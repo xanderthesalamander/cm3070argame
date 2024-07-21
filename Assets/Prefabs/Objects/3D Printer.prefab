@@ -1927,13 +1927,15 @@ MonoBehaviour:
     Make sure the
     shield is between you and the enemy though...'
   gunPrefabs:
-  - {fileID: 8787136631746088596, guid: 5f8ec988d880446468407de234d1e80e, type: 3}
   - {fileID: 8787136631746088596, guid: 9b6e2296e43e441329ce894d0d23de9d, type: 3}
+  - {fileID: 8787136631746088596, guid: 47e9781c57c6940f49c24630d97b54b7, type: 3}
   - {fileID: 8787136631746088596, guid: e1cd78ad8f74348ba900a155a37b266d, type: 3}
+  - {fileID: 8787136631746088596, guid: 71cc9044bb1eb44e5a2c51c26f4730fb, type: 3}
   gunPreviewPrefabs:
-  - {fileID: 4866226911719255794, guid: 76a40811396f24fd79d5b9a3aaa88d3b, type: 3}
   - {fileID: 6064074028379999418, guid: 91c10cb8b6a2d40e59db458cbb197d2e, type: 3}
+  - {fileID: 3205718507929408004, guid: 61d79a0ee84ce4337aa3372edddaf722, type: 3}
   - {fileID: 4110219731248672040, guid: 3a81ff15266f4462196a661c4399d980, type: 3}
+  - {fileID: 3060042289697345498, guid: 12dc2b25fd2ce437b9cdea4f5625edea, type: 3}
   turretPrefabs:
   - {fileID: 6832654409722535757, guid: ed78e52b23e5046279433bb71e352ee3, type: 3}
   - {fileID: 6832654409722535757, guid: 3b6bca60df9c8457ca0e9f1b2f899357, type: 3}

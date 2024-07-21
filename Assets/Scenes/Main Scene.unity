@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3773497088055060156, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5525540284517756108, guid: 26d27f3ab96ac4fc685ebed022e39a67, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3262,7 +3262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5687,7 +5687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8970161244172098491, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9169332588097951512, guid: ad90d4c18d6bb444eab33bf87792bc3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7369,9 +7369,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Arm Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 848532193}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddResource
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ResourceManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167304427324428010, guid: 3624a897eaae348ef99296109c122a83, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4410789104288434208, guid: 3624a897eaae348ef99296109c122a83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4571927527921851980, guid: 3624a897eaae348ef99296109c122a83, type: 3}
       propertyPath: m_AnchorMax.x

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4832402979343849641}
   - component: {fileID: 6279480936032476865}
   m_Layer: 6
-  m_Name: Y1
+  m_Name: R2 (tail)
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8aaba14d36f5c481d939778fd795097a, type: 2}
+  - {fileID: 2100000, guid: 73a4fff9eb2e44e3e8d2a59fcb0fff4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb94a99eea7347a09fce5ee64c32751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  damage: 50
+  speed: 20
+  damage: 25
   destroyAfterSeconds: 1
 --- !u!1 &7325062989607587700
 GameObject:
@@ -203,7 +203,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8aaba14d36f5c481d939778fd795097a, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,7 +255,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.9476305, b: 0, a: 1}
+      key0: {r: 1, g: 0.07212778, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

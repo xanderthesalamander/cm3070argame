@@ -327,7 +327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bc27197c6a3ad4837946c877226fa53d, type: 2}
+  - {fileID: 2100000, guid: 59e071eb2723148ba8c1bce090cc1010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -580,7 +580,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63181a72dd1b54d01af417fec0e3babd, type: 2}
+  - {fileID: 2100000, guid: 59e071eb2723148ba8c1bce090cc1010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -774,6 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6965726970724856675, guid: 7deae1006fa3a47c68cb1943ae05c157, type: 3}
+  bulletsPerTrigger: 1
   bulletSpawnPoint: {fileID: 4239503209992313945}
   debugScreenText: {fileID: 4207857992114319122}
 --- !u!54 &2472972365847605756
@@ -995,7 +996,7 @@ MonoBehaviour:
   itemName: Simple Gun
   itemDescription: 'A simple gun that does its job
 
-    Not very powerful'
+    Damage: 10'
   itemCost: 30
 --- !u!1001 &3175938108108395637
 PrefabInstance:

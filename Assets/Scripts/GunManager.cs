@@ -6,13 +6,15 @@ using TMPro;
 
 public class GunManager : MonoBehaviour
 {
-    public GameObject bullet;
-    public Transform bulletSpawnPoint;
+    [SerializeField] public GameObject bullet;
+    [SerializeField] private int bulletsPerTrigger = 1;
+    [SerializeField] public Transform bulletSpawnPoint;
 
     [SerializeField] private TextMeshProUGUI debugScreenText;
     private bool canShootLeft = false;
     private bool canShootRight = false;
     private BulletStats bulletStats;
+    private int bulletShotCount = 0;
 
     void Start()
     {
@@ -67,14 +69,16 @@ public class GunManager : MonoBehaviour
         {
             if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                FireBullet();
+                bulletShotCount = bulletsPerTrigger;
+                InvokeRepeating("FireBullet", 0.0f, 0.04f);
             }
         }
         if (canShootRight)
         {
             if(OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
             {
-                FireBullet();
+                bulletShotCount = bulletsPerTrigger;
+                InvokeRepeating("FireBullet", 0.0f, 0.04f);
             }
         }
     }
@@ -89,6 +93,11 @@ public class GunManager : MonoBehaviour
         spawnedBulletRB.velocity = bulletSpawnPoint.transform.forward * bulletStats.speed;
         // Destroy the bullet
         Destroy(spawnedBullet, bulletStats.destroyAfterSeconds);
+        // Cancel shooting if finished the bullets per trigger
+        if (--bulletShotCount == 0)
+        {
+            CancelInvoke("FireBullet");
+        }
     }
 
     public void DebugGun()
