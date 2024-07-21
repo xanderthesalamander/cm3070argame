@@ -35,6 +35,8 @@ public class ArmControllerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private TextMeshProUGUI victoryScoreText;
     [SerializeField] private TextMeshProUGUI debugScreenText;
+    // Others
+    private bool printerPlaced = false;
     
     void Awake()
     {
@@ -64,17 +66,26 @@ public class ArmControllerManager : MonoBehaviour
         }
         if (state == GameState.GameStart)
         {
-            // Game has started - user to place 3D printer
-            DeactivateAllScreens();
-            DeactivateAllFunctionalities();
-            updateCurrentScreen(startScreen);
-            placePrinter?.SetActive(true);
-            placePrinter?.GetComponent<PlaceObject>().PreviewOn();
-            currentScreen?.SetActive(true);
-            DeactivateAllButtons();
-            toggleScreenButton?.SetActive(true);
-            DeactivateAllTutorials();
-            tutorialPlacePrinter?.SetActive(true);
+            if (printerPlaced)
+            {
+                // Skip this step
+                Debug.Log("Skipping printer placement as already done");
+                StartPlanning();
+            }
+            else
+            {
+                // Game has started - user to place 3D printer
+                DeactivateAllScreens();
+                DeactivateAllFunctionalities();
+                updateCurrentScreen(startScreen);
+                placePrinter?.SetActive(true);
+                placePrinter?.GetComponent<PlaceObject>().PreviewOn();
+                currentScreen?.SetActive(true);
+                DeactivateAllButtons();
+                toggleScreenButton?.SetActive(true);
+                DeactivateAllTutorials();
+                tutorialPlacePrinter?.SetActive(true);
+            }
         }
         if (state == GameState.PlayerPlanningState)
         {
@@ -289,5 +300,10 @@ public class ArmControllerManager : MonoBehaviour
     {
         Debug.Log("ArmControlManager - StartWave");
         GameManager.instance.UpdateGameState(GameState.EnemyWaveState);
+    }
+
+    public void PrinterPlaced()
+    {
+        printerPlaced = true;
     }
 }

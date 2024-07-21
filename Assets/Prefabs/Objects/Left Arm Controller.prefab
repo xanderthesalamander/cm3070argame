@@ -715,9 +715,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EnemySpawnerStartPoint, Assembly-CSharp
-        m_MethodName: SetNoParent
+      - m_Target: {fileID: 2025784058160466899}
+        m_TargetAssemblyTypeName: ArmControllerManager, Assembly-CSharp
+        m_MethodName: PrinterPlaced
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
