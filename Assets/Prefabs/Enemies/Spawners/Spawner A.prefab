@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 5326658790589942451, guid: 07f92c35c01d54152822dbfd1c8418c8, type: 3}
+  - {fileID: 8989564441167601490, guid: 3b98a0bb8fefa469fa70550fb611a806, type: 3}
   baseProbabilityThreshold: 0.995
   spawnSound: {fileID: 8300000, guid: 260a606ce3de241c187fa915623559d8, type: 3}
   audioSource: {fileID: 1471392638402631508}
