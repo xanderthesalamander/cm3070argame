@@ -9,7 +9,6 @@ public class GunManager : MonoBehaviour
     [SerializeField] public GameObject bullet;
     [SerializeField] private int bulletsPerTrigger = 1;
     [SerializeField] public Transform bulletSpawnPoint;
-
     [SerializeField] private TextMeshProUGUI debugScreenText;
     private bool canShootLeft = false;
     private bool canShootRight = false;
