@@ -1792,7 +1792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1349674152172282220, guid: 540d33fad65064e71af421bb85f6acb5, type: 3}
       propertyPath: m_Name
-      value: Spawner B1
+      value: Spawner A1
       objectReference: {fileID: 0}
     - target: {fileID: 1349674152172282220, guid: 540d33fad65064e71af421bb85f6acb5, type: 3}
       propertyPath: m_IsActive
@@ -2426,7 +2426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1349674152172282220, guid: 540d33fad65064e71af421bb85f6acb5, type: 3}
       propertyPath: m_Name
-      value: Spawner B2
+      value: Spawner A2
       objectReference: {fileID: 0}
     - target: {fileID: 1349674152172282220, guid: 540d33fad65064e71af421bb85f6acb5, type: 3}
       propertyPath: m_IsActive
@@ -4252,7 +4252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1349674152172282220, guid: 80fa65a28b52e42538c8b0aa345ddb1c, type: 3}
       propertyPath: m_Name
-      value: Spawner A3
+      value: Spawner P3
       objectReference: {fileID: 0}
     - target: {fileID: 1349674152172282220, guid: 80fa65a28b52e42538c8b0aa345ddb1c, type: 3}
       propertyPath: m_IsActive
