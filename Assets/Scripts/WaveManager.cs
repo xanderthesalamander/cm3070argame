@@ -141,7 +141,14 @@ public class WaveManager : MonoBehaviour
     {
         foreach (GameObject enemySpawnPoint in enemySpawnPoints)
         {
-            enemySpawnPoint.SetActive(true);
+            if (enemySpawnPoint != null)
+            {
+                enemySpawnPoint.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("WaveManager - Enemy Spawn Point missing");
+            }
         }
     }
 
