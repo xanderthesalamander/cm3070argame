@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private float moveSpeed = 1.0f;
     private Transform target;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    private float minShootingDistance = 1.0f;
     
     void Start()
     {
@@ -15,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyStats != null)
         {
             moveSpeed = enemyStats.moveSpeed;
+            minShootingDistance = enemyStats.minShootingDistance;
         }
         // Get enemy navigation mesh agent
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -31,8 +33,12 @@ public class EnemyMovement : MonoBehaviour
         // Check if the target is not null before proceeding
         if (target != null)
         {
-            // Look at target
-            transform.LookAt(target);
+            bool closeEnough = (Vector3.Distance(transform.position, target.position) <= minShootingDistance);
+            if (closeEnough)
+            {
+                // Look at target when close enough to shoot
+                transform.LookAt(target);
+            }
             // Move towards the target
             navMeshAgent.SetDestination(target.transform.position);
             // Set speed
