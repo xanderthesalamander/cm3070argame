@@ -9,14 +9,17 @@ public class GunManager : MonoBehaviour
     [SerializeField] public GameObject bullet;
     [SerializeField] private int bulletsPerTrigger = 1;
     [SerializeField] public Transform bulletSpawnPoint;
+    [SerializeField] public AudioClip gunShotAudio;
     [SerializeField] private TextMeshProUGUI debugScreenText;
     private bool canShootLeft = false;
     private bool canShootRight = false;
     private BulletStats bulletStats;
     private int bulletShotCount = 0;
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         bulletStats = bullet.GetComponent<BulletStats>();
     }
 
@@ -85,6 +88,11 @@ public class GunManager : MonoBehaviour
     // Fire bullet
     void FireBullet()
     {
+        if (audioSource != null)
+        {
+            // Play sound
+            audioSource.PlayOneShot(gunShotAudio);
+        }
         GameObject spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
         Rigidbody spawnedBulletRB = spawnedBullet.GetComponent<Rigidbody>();
         // Place it in bulletSpawnPoint and give it initial velocity

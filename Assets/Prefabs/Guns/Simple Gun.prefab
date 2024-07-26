@@ -776,6 +776,7 @@ MonoBehaviour:
   bullet: {fileID: 6965726970724856675, guid: 7deae1006fa3a47c68cb1943ae05c157, type: 3}
   bulletsPerTrigger: 1
   bulletSpawnPoint: {fileID: 4239503209992313945}
+  gunShotAudio: {fileID: 8300000, guid: d3fc5c9bdd97040eeae85d4c760a5c7c, type: 3}
   debugScreenText: {fileID: 4207857992114319122}
 --- !u!54 &2472972365847605756
 Rigidbody:
